@@ -1,21 +1,27 @@
 import fileinput, re
-import sys
-import os
+import os, sys
+
 from os.path import isfile, join
 
 
-path="/Users/shabandi/Desktop/All Photos"
+path="SHGAUN BANDI"
 
 
 def modify_file(value):
-    print("Here")
     file_name = join(os.getcwd(), 'DjangoServer/settings.py')
-    fh = fileinput.input(file_name, inplace=True)
-    for line in fh:
-        replacement = "MEDIA_ROOT=\"" + value + "\""
-        line = re.sub('MEDIA_ROOT=.+', replacement, line)
-        sys.stdout.write(line)
-    fh.close()
+    replacement_text = "MEDIA_ROOT=\"" + value + "\"";
+
+    # regex = re.compile(r"^MEDIA_ROOT.*$", re.IGNORECASE)
+    regex = "MEDIA_ROOT.*"
+
+
+    readFile = open(file_name)
+    lines = readFile.readlines()
+    readFile.close()
+    w = open(file_name, 'w')
+    w.writelines([item for item in lines[:-1]])
+    w.writelines(replacement_text)
+    w.close()
 
 
 modify_file(path)

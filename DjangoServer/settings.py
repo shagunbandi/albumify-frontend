@@ -124,4 +124,4 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 # KEEP THIS THE LAST LINE ELSE MAIN WILL NOT REMOVE THIS LINE
-MEDIA_ROOT = '/Users/shabandi/Desktop/All Photos/Wallpapers/'
+MEDIA_ROOT = "/Users/shabandi/Desktop/All Photos/Wallpapers"

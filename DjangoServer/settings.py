@@ -25,7 +25,7 @@ SECRET_KEY = '@lltufe@*_8=(f0#b6%l$ifv!jh_9ku@n%vpf6hk+4dcc7+5ao'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,10 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Photos',
+    'rest_framework',
+    'corsheaders',
+    'photos',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -51,6 +54,16 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'DjangoServer.urls'
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+# REST_FRAMEWORK = {
+#     # Use Django's standard `django.contrib.auth` permissions,
+#     # or allow read-only access for unauthenticated users.
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+#     ]
+# }
 
 TEMPLATES = [
     {
@@ -119,9 +132,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 
 # KEEP THIS THE LAST LINE ELSE MAIN WILL NOT REMOVE THIS LINE
-MEDIA_ROOT = "/Users/shabandi/Desktop/All Photos/Wallpapers"
+# MEDIA_ROOT = "/Users/shabandi/Desktop/All photos/Shikharji Bandi Family Oct. 2019"
+MEDIA_ROOT = "/Users/shabandi/Desktop/All photos"

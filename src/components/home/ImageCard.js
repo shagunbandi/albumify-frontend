@@ -1,12 +1,34 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+
+import {
+  incrementCount
+} from '../../actions/searchActions';
+
+
 
 export class ImageCard extends Component {
+
+  onImageLoad = () => {
+    this.props.incrementCount();
+    console.log(this.props.imageCount);
+  }
+
   render() {
     const { image } = this.props;
     return (
-      <img className="w-100 mb-2" src={"http://" + image} alt="Image" />
+      <img className="image-card" src={"http://localhost:8000" + image} alt="" onLoad={this.onImageLoad} />
     );
   }
 }
 
-export default ImageCard;
+const mapStateToProps = state => ({
+  imageCount: state.images.imageCount,
+});
+
+
+export default connect(
+  mapStateToProps,
+  { incrementCount }
+)(ImageCard);

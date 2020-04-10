@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <div>
+          <div className="black-bg">
             <Navbar />
             <Route exact path="/" component={Landing} />
             {/* <Route exact path="/movie/:id" component={Movie} /> */}

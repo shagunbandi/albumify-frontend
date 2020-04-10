@@ -1,13 +1,15 @@
 import {
   SEARCH_MOVIE,
   LOADING,
-  FETCH_IMAGES
+  FETCH_IMAGES,
+  INCREMENT_COUNT
 } from '../actions/types';
 
 const initialState = {
   text: '',
   loading: false,
-  images: []
+  images: [],
+  imageCount: 0
 };
 
 export default function (state = initialState, action) {
@@ -26,6 +28,13 @@ export default function (state = initialState, action) {
         text: action.payload,
         loading: false
       };
+
+    case INCREMENT_COUNT:
+      return {
+        ...state,
+        imageCount: state.imageCount + 1
+      }
+
     case LOADING:
       return {
         ...state,

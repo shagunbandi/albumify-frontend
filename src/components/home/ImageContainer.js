@@ -11,10 +11,10 @@ export class ImageContainer extends Component {
     console.log(this.props);
     content = images.response === 'Success' ?
       images.data.map((image, index) => (
-        <ImageCard key={index} image={"localhost:8000" + image} />
+        <ImageCard key={index} image={image} />
       )) :
       "Data Could Not Be Loaded :("
-    return <div className="row">{content}</div>;
+    return <div>{content}</div>;
   }
 }
 

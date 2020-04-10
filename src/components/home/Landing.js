@@ -22,7 +22,7 @@ export class Landing extends Component {
   render() {
     const { loading } = this.props;
     return (
-      <div className="container">
+      <div className="main-container">
         {/* <SearchForm /> */}
         {loading ? <Spinner /> : <ImageContainer />}
       </div>

@@ -1,4 +1,4 @@
-import { SEARCH_MOVIE, LOADING, FETCH_IMAGES } from './types';
+import { SEARCH_MOVIE, LOADING, FETCH_IMAGES, INCREMENT_COUNT } from './types';
 import axios from 'axios';
 
 import { APIKey } from '../APIKey';
@@ -10,6 +10,11 @@ export const searchMovie = text => dispatch => {
   });
 };
 
+export const incrementCount = () => {
+  return {
+    type: INCREMENT_COUNT
+  };
+};
 
 export const fetchImages = () => dispatch => {
   axios

@@ -5,11 +5,13 @@ import { connect } from 'react-redux';
 import ImageCard from './ImageCard';
 
 export class ImageContainer extends Component {
+
   render() {
     const { images } = this.props;
-    let content = '';
-    console.log(this.props);
-    content = images.response === 'Success' ?
+    if (!images) {
+      return <div>Loading...</div>
+    }
+    let content = images.response === 'Success' ?
       images.data.map((image, index) => (
         <ImageCard key={index} image={image} />
       )) :
@@ -19,7 +21,10 @@ export class ImageContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  images: state.images.images
+  images: state.images.images,
+  imageCount: state.images.imageCount,
 });
 
-export default connect(mapStateToProps)(ImageContainer);
+export default connect(
+  mapStateToProps
+)(ImageContainer);

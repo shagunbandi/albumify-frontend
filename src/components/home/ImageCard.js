@@ -3,22 +3,19 @@ import { connect } from 'react-redux';
 
 
 import {
-  incrementCount
+  incrementCount,
 } from '../../actions/searchActions';
-
-
 
 export class ImageCard extends Component {
 
   onImageLoad = () => {
     this.props.incrementCount();
-    console.log(this.props.imageCount);
   }
 
   render() {
     const { image } = this.props;
     return (
-      <img className="image-card" src={"http://localhost:8000" + image} alt="" onLoad={this.onImageLoad} />
+      <img className="image-card" src={"http://localhost:8000" + image} alt="" onLoad={this.onImageLoad} onError={this.onImageLoad} />
     );
   }
 }
@@ -30,5 +27,7 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { incrementCount }
+  {
+    incrementCount,
+  }
 )(ImageCard);

@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     'corsheaders',
     'photos',
 ]
@@ -138,4 +137,4 @@ MEDIA_URL = '/media/'
 
 # KEEP THIS THE LAST LINE ELSE MAIN WILL NOT REMOVE THIS LINE
 # MEDIA_ROOT = "/Users/shabandi/Desktop/All photos/Shikharji Bandi Family Oct. 2019"
-MEDIA_ROOT = "/Users/shabandi/Desktop/All photos"
+MEDIA_ROOT = "/Users/shabandi/Desktop/All Photos"

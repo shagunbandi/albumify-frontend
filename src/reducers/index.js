@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import searchReducer from './searchReducer';
+import imageReducer from './imageReducer';
 
 export default combineReducers({
-  movies: searchReducer
+  images: imageReducer
 });

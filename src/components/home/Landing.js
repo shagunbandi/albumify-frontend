@@ -2,24 +2,39 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import SearchForm from './SearchForm';
-import MoviesContainer from './MoviesContainer';
+// import SearchForm from './SearchForm';
+import ImageContainer from './ImageContainer';
 import Spinner from '../layout/Spinner';
 
+import {
+  setLoading,
+  fetchImages
+} from '../../actions/searchActions';
+
+
 export class Landing extends Component {
+
+  componentWillMount() {
+    this.props.setLoading();
+    this.props.fetchImages();
+  }
+
   render() {
     const { loading } = this.props;
     return (
       <div className="container">
-        <SearchForm />
-        {loading ? <Spinner /> : <MoviesContainer />}
+        {/* <SearchForm /> */}
+        {loading ? <Spinner /> : <ImageContainer />}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  loading: state.movies.loading
+  loading: state.images.loading
 });
 
-export default connect(mapStateToProps)(Landing);
+export default connect(
+  mapStateToProps,
+  { fetchImages, setLoading }
+)(Landing);

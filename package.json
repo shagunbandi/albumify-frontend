@@ -1,8 +1,8 @@
 {
-  "name": "movies-series-app",
+  "name": "album-here",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yaser-alazem.github.io/movies-series-info",
+  "homepage": "http://localhost:3000",
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.4.1",

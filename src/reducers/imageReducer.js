@@ -1,17 +1,13 @@
 import {
   SEARCH_MOVIE,
-  FETCH_MOVIES,
-  FETCH_MOVIE,
   LOADING,
   FETCH_IMAGES
 } from '../actions/types';
 
 const initialState = {
   text: '',
-  movies: [],
   loading: false,
-  movie: [],
-  urls: []
+  images: []
 };
 
 export default function (state = initialState, action) {
@@ -21,26 +17,13 @@ export default function (state = initialState, action) {
       console.log("Data Given Back")
       return {
         ...state,
-        new_var: "New Var",
-        urls: action.payload,
+        images: action.payload,
         loading: false
       };
     case SEARCH_MOVIE:
       return {
         ...state,
         text: action.payload,
-        loading: false
-      };
-    case FETCH_MOVIES:
-      return {
-        ...state,
-        movies: action.payload,
-        loading: false
-      };
-    case FETCH_MOVIE:
-      return {
-        ...state,
-        movie: action.payload,
         loading: false
       };
     case LOADING:

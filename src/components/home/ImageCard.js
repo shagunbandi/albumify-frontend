@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
-export class MovieCard extends Component {
+export class ImageCard extends Component {
   render() {
     const { image } = this.props;
     return (
@@ -10,4 +9,4 @@ export class MovieCard extends Component {
   }
 }
 
-export default MovieCard;
+export default ImageCard;

@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import {
-  searchMovie,
-  fetchMovies,
   setLoading,
   fetchImages
 } from '../../actions/searchActions';
@@ -19,10 +17,6 @@ export class SearchForm extends Component {
     this.props.fetchMovies(this.props.text);
     this.props.setLoading();
   };
-
-  componentWillMount() {
-    this.props.fetchImages();
-  }
 
   render() {
     return (
@@ -55,5 +49,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { searchMovie, fetchMovies, setLoading, fetchImages }
+  { setLoading, fetchImages }
 )(SearchForm);

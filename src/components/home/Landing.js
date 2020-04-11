@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 // import SearchForm from './SearchForm';
-import ImageContainer from './ImageContainer';
 import DirectoryContainer from './DirectoryContainer';
 import FileContainer from './FileContainer'
 
@@ -11,7 +10,6 @@ import Spinner from '../layout/Spinner';
 
 import {
   setLoading,
-  // fetchImages,
   getAllImagesWithPath,
 } from '../../actions/searchActions';
 
@@ -25,7 +23,7 @@ export class Landing extends Component {
   }
 
   render() {
-    const { loading, folder } = this.props;
+    const { loading } = this.props;
     return (
       <div className="main-container">
         {loading ? <Spinner /> : <DirectoryContainer />}

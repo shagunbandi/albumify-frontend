@@ -1,4 +1,4 @@
-import { LOADING, FETCH_IMAGES, INCREMENT_COUNT, FETCH_MORE_IMAGES, FILE_FOLDER_IMAGES } from './types';
+import { LOADING, FETCH_IMAGES, INCREMENT_COUNT, FETCH_MORE_IMAGES, FILE_FOLDER_IMAGES, CURRENT_DIRECTORY } from './types';
 import { BASE_URL } from './constants';
 import axios from 'axios';
 
@@ -43,6 +43,13 @@ export const fetchImages = () => dispatch => {
     )
     .catch(err => console.log(err));
 };
+
+export const selectSubDirectoryGlobal = (subDir) => {
+  return {
+    type: CURRENT_DIRECTORY,
+    payload: subDir
+  }
+}
 
 
 export const setLoading = () => {

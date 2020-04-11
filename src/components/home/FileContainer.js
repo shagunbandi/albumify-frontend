@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import ImageCard from './ImageCard';
-import FolderCard from './FolderCard';
 import FileCard from './FileCard'
 
 import {
@@ -15,7 +13,9 @@ export class FileContainer extends Component {
 
     render() {
         const { file, currentDir } = this.props;
-        console.log(file[currentDir]);
+        if (!file[currentDir]) {
+            return ("Error 404: Kooch ni mila")
+        }
         let content = file[currentDir].map((fileData, index) => (
             <FileCard key={index} fileData={fileData} />
         ))

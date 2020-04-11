@@ -15,7 +15,7 @@ export class ImageCard extends Component {
   render() {
     const { image } = this.props;
     return (
-      <img className="image-card" src={"http://localhost:8000" + image} alt="" onLoad={this.onImageLoad} onError={this.onImageLoad} />
+      <img className="image-card" src={"http://localhost:8000/" + image} alt="" onLoad={this.onImageLoad} onError={this.onImageLoad} />
     );
   }
 }

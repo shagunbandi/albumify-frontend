@@ -3,16 +3,19 @@ import { connect } from 'react-redux';
 
 
 import {
-    incrementCount,
+    selectSubDirectoryGlobal
 } from '../../actions/searchActions';
 
 export class FolderCard extends Component {
 
+    selectSubDirectory = () => {
+        this.props.selectSubDirectoryGlobal(this.props.folderData);
+    }
 
     render() {
         const { folderData } = this.props;
         return (
-            <div className="card folder-card">
+            <div className="card folder-card" onClick={this.selectSubDirectory}>
                 <div className="card-body">
                     <h5 className="card-title">{folderData}</h5>
                 </div>
@@ -29,6 +32,6 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     {
-        incrementCount,
+        selectSubDirectoryGlobal,
     }
 )(FolderCard);

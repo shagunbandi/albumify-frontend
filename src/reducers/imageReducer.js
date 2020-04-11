@@ -4,7 +4,8 @@ import {
   FETCH_IMAGES,
   INCREMENT_COUNT,
   FETCH_MORE_IMAGES,
-  FILE_FOLDER_IMAGES
+  FILE_FOLDER_IMAGES,
+  CURRENT_DIRECTORY
 } from '../actions/types';
 
 const initialState = {
@@ -20,6 +21,12 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+
+    case CURRENT_DIRECTORY:
+      return {
+        ...state,
+        currentDir: action.payload
+      }
 
     case FETCH_MORE_IMAGES:
       console.log("Fetching More Data");

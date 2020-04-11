@@ -33,19 +33,35 @@ export class DirectoryContainer extends Component {
             prev += folderName + '/'
             return prev;
         })
-        folderPathList = folderPathList.map((folderPath, i) => (
-            <span onClick={() => this.props.selectSubDirectoryGlobal(folderPath.slice(0, folderPath.length - 1))}>{folerNameList[i]}/</span>
-        ));
+        folderPathList = folderPathList.map((folderPath, i) => {
+            if (i !== folderPathList.length - 1) {
+                return <li
+                    className='breadcrumb-item'
+                    onClick={() => this.props.selectSubDirectoryGlobal(folderPath.slice(0, folderPath.length - 1))}
+                ><span>{folerNameList[i]}</span></li>
+            }
+            else {
+                return <li
+                    className='breadcrumb-item active'
+                    onClick={() => this.props.selectSubDirectoryGlobal(folderPath.slice(0, folderPath.length - 1))}
+                ><span>{folerNameList[i]}</span></li>
+            }
+        })
 
         return (
             <div>
-                <h5>{folderPathList}</h5>
-                {content !== '' ?
-                    <div className='container'>
-                        <div className='row'>
-                            {content}
-                        </div>
-                    </div> : ''
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        {folderPathList}
+                    </ol>
+                </nav>
+                {
+                    content !== '' ?
+                        <div className='container'>
+                            <div className='row'>
+                                {content}
+                            </div>
+                        </div> : ''
                 }
 
             </div >

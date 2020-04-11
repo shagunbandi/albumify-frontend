@@ -14,10 +14,12 @@ export class FolderCard extends Component {
 
     render() {
         const { folderData } = this.props;
+        let folderName = folderData.split('/');
+        folderName = folderName[folderName.length - 1];
         return (
             <div className="card folder-card" onClick={this.selectSubDirectory}>
                 <div className="card-body">
-                    <h5 className="card-title">{folderData}</h5>
+                    <h5 className="card-title">{folderName}</h5>
                 </div>
             </div>
         );

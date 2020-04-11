@@ -7,55 +7,21 @@ from PIL.ExifTags import TAGS
 from django.shortcuts import render
 import math
 
+
+from . import helper
+
+
 path = settings.MEDIA_ROOT
 MEDIA_URL = settings.MEDIA_URL
 IMAGES_PER_PAGE = 50
 
 
-def get_metadata(path):
-    image = Image.open(path)
-    exifdata = image.getexif()
+def get_all_images_with_path(request):
+    return JsonResponse({
+        'response': "Success",
+        'data': helper.get_all_images_with_path(path, 'media')
+    })
 
-    metadata = {}
-
-    for tag_id in exifdata:
-        tag = TAGS.get(tag_id, tag_id)
-        data = exifdata.get(tag_id)
-        if isinstance(data, bytes):
-            data = data.decode('utf-8')
-        metadata[tag] = data
-    return metadata
-
-
-# def get_all_file_urls(path, join_with):
-#     photos_in_directory = {
-#         'files': [],
-#         'folders': {}
-#     }
-#     for f in listdir(path):
-#         if isfile(join(path, f)):
-#             url = join(join_with, f)
-#             # metadata = {}
-#             # try:
-#             #     metadata = get_metadata(join(path, f))
-#             #     metadata[url] = url
-#             # except:
-#             #     metadata[url] = url
-#             photos_in_directory['files'].append(url)
-#         else:
-#             photos_in_directory['folders'][f] = get_all_file_urls(join(path, f), join(join_with, f))
-#     return photos_in_directory
-
-
-def get_image_url_rec(path, join_with):
-    photos_in_directory = []
-    for f in listdir(path):
-        if isfile(join(path, f)):
-            url = join(join_with, f)
-            photos_in_directory.append(url)
-        else:
-            photos_in_directory += get_image_url_rec(join(path, f), join(join_with, f))
-    return photos_in_directory
 
 
 def all_images_urls(request):
@@ -63,7 +29,7 @@ def all_images_urls(request):
     if request.method == 'GET':
         page = int(request.GET['page'])
 
-    data = get_image_url_rec(path, '/media/')
+    data = helper.get_image_url_rec(path, 'media')
     total_files = len(data)
     total_pages = math.ceil(total_files / IMAGES_PER_PAGE)
 

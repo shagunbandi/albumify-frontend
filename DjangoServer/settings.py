@@ -136,5 +136,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 
 # KEEP THIS THE LAST LINE ELSE MAIN WILL NOT REMOVE THIS LINE
-# MEDIA_ROOT = "/Users/shabandi/Desktop/All photos/Shikharji Bandi Family Oct. 2019"
-MEDIA_ROOT = "/Users/shabandi/Desktop/All Photos"
+MEDIA_ROOT = "/Users/shabandi/Desktop/All Photos/"

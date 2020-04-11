@@ -19,7 +19,7 @@ class App extends Component {
             <Navbar />
             <Route exact path="/" component={Landing} />
             {/* <Route exact path="/movie/:id" component={Movie} /> */}
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </Router>
       </Provider>

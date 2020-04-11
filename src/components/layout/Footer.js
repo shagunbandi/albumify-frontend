@@ -5,7 +5,7 @@ function Footer() {
     <div>
       <div className="row">
         <div className="col-md-12">
-          <div className="footer p-3 mt-4 text-center bg-dark text-light">
+          <div className="footer p-3 mt-4 text-center bg-lght text-dark">
             Developed By:
             <span className="text-warning font-weight-normal">
               &nbsp;Shagun Bandi

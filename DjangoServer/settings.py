@@ -133,7 +133,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/home/'
 
 # KEEP THIS THE LAST LINE ELSE MAIN WILL NOT REMOVE THIS LINE
 MEDIA_ROOT = "/Users/shabandi/Desktop/All Photos/"

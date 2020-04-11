@@ -19,7 +19,7 @@ IMAGES_PER_PAGE = 50
 def get_all_images_with_path(request):
     return JsonResponse({
         'response': "Success",
-        'data': helper.get_all_images_with_path(path, 'media')
+        'data': helper.get_all_images_with_path(path, 'home')
     })
 
 
@@ -29,7 +29,7 @@ def all_images_urls(request):
     if request.method == 'GET':
         page = int(request.GET['page'])
 
-    data = helper.get_image_url_rec(path, 'media')
+    data = helper.get_image_url_rec(path, 'home')
     total_files = len(data)
     total_pages = math.ceil(total_files / IMAGES_PER_PAGE)
 

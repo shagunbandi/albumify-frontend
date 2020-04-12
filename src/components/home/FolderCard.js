@@ -9,7 +9,14 @@ import {
 export class FolderCard extends Component {
 
     selectSubDirectory = () => {
-        this.props.selectSubDirectoryGlobal(this.props.folderData);
+        const { folderData, isBackDir } = this.props;
+        if (isBackDir) {
+            let prevDir = folderData.split('/')
+            prevDir = prevDir.slice(0, prevDir.length - 1).join('/');
+            this.props.selectSubDirectoryGlobal(prevDir);
+            return
+        }
+        this.props.selectSubDirectoryGlobal(folderData);
     }
 
     render() {

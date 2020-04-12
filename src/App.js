@@ -17,8 +17,8 @@ class App extends Component {
         <Router>
           <div className="black-bg">
             <Navbar />
-            <Route exact path="/" component={Landing} />
-            {/* <Route exact path="/movie/:id" component={Movie} /> */}
+            <Route path="/" component={Landing} />
+            {/* <Route exact path="/goto/:id" component={Landing} /> */}
             {/* <Footer /> */}
           </div>
         </Router>

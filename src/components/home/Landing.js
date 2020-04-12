@@ -11,6 +11,7 @@ import Spinner from '../layout/Spinner';
 import {
   setLoading,
   getAllImagesWithPath,
+  selectSubDirectoryGlobal
 } from '../../actions/searchActions';
 
 
@@ -20,6 +21,13 @@ export class Landing extends Component {
     this.props.setLoading();
     this.props.getAllImagesWithPath();
     // this.props.fetchImages();
+  }
+
+  componentDidMount() {
+    if (this.props.location.pathname !== "") {
+      this.props.selectSubDirectoryGlobal(this.props.location.pathname);
+    }
+
   }
 
   render() {
@@ -44,6 +52,7 @@ export default connect(
   {
     // fetchImages,
     setLoading,
+    selectSubDirectoryGlobal,
     getAllImagesWithPath,
   }
 )(Landing);

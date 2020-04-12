@@ -20,11 +20,21 @@ export class DirectoryContainer extends Component {
     render() {
         const { currentDir, folder, loading } = this.props;
         let subFolders = folder[currentDir];
-        let content = ''
+
+        let backDir = currentDir.split('/');
+        if (backDir.length == 1) {
+            backDir = backDir[0];
+        }
+        else {
+            backDir = backDir.slice(0, backDir.length - 1).join('/');
+        }
+        backDir += '/Back'
+
+        let content = [<FolderCard key={'-1'} folderData={backDir} isBackDir={true} />]
         if (subFolders) {
-            content = subFolders.map((folderData, index) => (
-                <FolderCard key={index} folderData={folderData} />
-            ))
+            content.push(subFolders.map((folderData, index) => (
+                <FolderCard key={index} folderData={folderData} isBackDir={false} />
+            )))
         }
 
         let prev = '';

@@ -14,7 +14,7 @@ export class FileContainer extends Component {
     render() {
         const { file, currentDir } = this.props;
         if (!file[currentDir]) {
-            return ("Error 404: Kooch ni mila")
+            return (<h3>No Files Found !</h3>)
         }
         let content = file[currentDir].map((fileData, index) => (
             <FileCard key={index} fileData={fileData} />

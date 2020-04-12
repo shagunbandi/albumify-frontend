@@ -21,7 +21,7 @@ export class FileContainer extends Component {
         ))
         return (
             <div>
-                <div className='container'>
+                <div className='container-fluid'>
                     <div className='row'>
                         {content}
                     </div>

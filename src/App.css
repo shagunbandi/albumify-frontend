@@ -26,3 +26,15 @@ img {
 .file-card-image {
     height: 200px;
 }
+
+.grey-navbar {
+    background-color: lightgray;
+}
+
+.breadcums-nav {
+    border-radius: 0px;
+}
+
+.nav-bar-buttons {
+    border-radius: 0px;
+}

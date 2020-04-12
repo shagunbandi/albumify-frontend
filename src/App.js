@@ -6,6 +6,7 @@ import './App.css';
 
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import NavBarOptions from './components/layout/NavBarOptions'
 
 import Landing from './components/home/Landing';
 import store from './store';
@@ -17,9 +18,8 @@ class App extends Component {
         <Router>
           <div className="black-bg">
             <Navbar />
+            <NavBarOptions />
             <Route path="/" component={Landing} />
-            {/* <Route exact path="/goto/:id" component={Landing} /> */}
-            {/* <Footer /> */}
           </div>
         </Router>
       </Provider>

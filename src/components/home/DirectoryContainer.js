@@ -60,14 +60,14 @@ export class DirectoryContainer extends Component {
 
         return (
             <div>
-                <nav aria-label="breadcrumb">
+                <nav aria-label="breadcrumb" className="breadcums-nav">
                     <ol class="breadcrumb">
                         {folderPathList}
                     </ol>
                 </nav>
                 {
                     content !== '' ?
-                        <div className='container'>
+                        <div className='container-fluid'>
                             <div className='row'>
                                 {content}
                             </div>

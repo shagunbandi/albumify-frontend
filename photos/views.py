@@ -13,7 +13,7 @@ from . import helper
 
 path = settings.MEDIA_ROOT
 MEDIA_URL = settings.MEDIA_URL
-IMAGES_PER_PAGE = 50
+IMAGES_PER_PAGE = 500000000
 
 
 def get_all_images_with_path(request):

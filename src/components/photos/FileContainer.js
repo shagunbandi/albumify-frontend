@@ -4,46 +4,53 @@ import { connect } from 'react-redux';
 
 import ImageCard from './ImageCard';
 
-import {
-  getMoreImages
-} from '../../actions/photosAction';
-
-
 export class FileContainer extends Component {
 
-  componentDidUpdate(nextProps) {
-    const { images, imageCount } = nextProps;
-    if (!images) {
-      return
-    }
-    if ('total_pages' in images && 'page_number' in images && images.total_pages === images.page_number) {
-      return;
-    }
-    console.log(images.total_till_now + ", " + imageCount);
-    if (images.total_till_now - 1 === imageCount) {
-      this.props.getMoreImages(images.page_number + 1);
+  constructor(props) {
+    super(props);
+    this.state = {
+      imageCount: 0,
+      imagesLoaded: [],
+      loadNextOn: 0,
+      response: false,
     }
   }
 
+  loadedAnotherImage = () => {
+    this.setState({ imageCount: this.state.imageCount + 1 }, () => {
+      if (this.state.imageCount === this.state.loadNextOn) {
+        this.loadMoreImages();
+      }
+    });
+  }
+
+  loadMoreImages() {
+    let { imagesLoaded, loadNextOn } = this.state;
+    let { images } = this.props;
+    if (images.response !== 'Success') {
+      return;
+    }
+    imagesLoaded = images.data.slice(0, loadNextOn + 50);
+    this.setState({ imagesLoaded, loadNextOn: loadNextOn + 50 });
+  }
+
+  componentDidMount() {
+    let { images } = this.props;
+    if (images.response !== 'Success') {
+      this.setState({ response: false });
+    }
+    else {
+      this.setState({ imageCount: 0, imagesLoaded: images.data.slice(0, 50), loadNextOn: 50, response: true });
+    }
+  }
 
   render() {
-    const { images } = this.props;
-    if (!images) {
-      return <div>Something Went Wrong :( </div>
-    }
-    let content = images.response === 'Success' ?
-      images.data.map((image, index) => (
-        <ImageCard key={index} image={image} />
-      )) :
-      "Data Could Not Be Loaded :("
-
-    let total_images_till_now = images ? images.total_till_now : 0;
-    let total_files = images ? images.total_files : 0;
-    let imageCount = this.props.imageCount;
+    let content = this.state.response ? this.state.imagesLoaded.map((image, index) => (
+      <ImageCard key={index} image={image} loadedAnotherImage={this.loadedAnotherImage.bind(this)} />
+    )) : "Content Could not be loaded :( ";
 
     return (
       <div>
-        <h3>Progress: {imageCount}/{total_images_till_now}/{total_files}</h3>
         {content}
       </div >
     );
@@ -52,12 +59,9 @@ export class FileContainer extends Component {
 
 const mapStateToProps = state => ({
   images: state.photos.images,
-  imageCount: state.photos.imageCount,
+  dataLoaded: state.photos.dataLoaded
 });
 
 export default connect(
-  mapStateToProps,
-  {
-    getMoreImages
-  }
+  mapStateToProps
 )(FileContainer);

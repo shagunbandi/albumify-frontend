@@ -7,7 +7,7 @@ import FolderCard from './FolderCard';
 import {
     setLoading,
     selectSubDirectoryGlobal
-} from '../../actions/searchActions';
+} from '../../actions/albumAction';
 
 
 export class DirectoryContainer extends Component {
@@ -18,11 +18,11 @@ export class DirectoryContainer extends Component {
     }
 
     render() {
-        const { currentDir, folder, loading } = this.props;
+        const { currentDir, folder } = this.props;
         let subFolders = folder[currentDir];
 
         let backDir = currentDir.split('/');
-        if (backDir.length == 1) {
+        if (backDir.length === 1) {
             backDir = backDir[0];
         }
         else {

@@ -6,7 +6,7 @@ import FileCard from './FileCard'
 
 import {
     setLoading,
-} from '../../actions/searchActions';
+} from '../../actions/albumAction';
 
 
 export class FileContainer extends Component {

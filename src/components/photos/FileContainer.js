@@ -6,10 +6,10 @@ import ImageCard from './ImageCard';
 
 import {
   getMoreImages
-} from '../../actions/searchActions';
+} from '../../actions/photosAction';
 
 
-export class ImageContainer extends Component {
+export class PhotosLanding extends Component {
 
   componentDidUpdate(nextProps) {
     const { images, imageCount } = nextProps;
@@ -20,7 +20,7 @@ export class ImageContainer extends Component {
       return;
     }
     console.log(images.total_till_now + ", " + imageCount);
-    if (images.total_till_now - 1 == imageCount) {
+    if (images.total_till_now - 1 === imageCount) {
       this.props.getMoreImages(images.page_number + 1);
     }
   }
@@ -60,4 +60,4 @@ export default connect(
   {
     getMoreImages
   }
-)(ImageContainer);
+)(PhotosLanding);

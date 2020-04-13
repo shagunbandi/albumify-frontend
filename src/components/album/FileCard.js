@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import {
-    incrementCount,
-} from '../../actions/searchActions';
+} from '../../actions/albumAction';
 
 export class FileCard extends Component {
 
@@ -24,7 +23,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    {
-        incrementCount,
-    }
+    {}
 )(FileCard);

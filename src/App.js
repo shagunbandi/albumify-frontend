@@ -7,8 +7,9 @@ import './App.css';
 import Navbar from './components/layout/Navbar';
 import NavBarOptions from './components/layout/NavBarOptions'
 
-import Landing from './components/home/Landing';
+import AlbumLanding from './components/album/AlbumLanding';
 import store from './store';
+import { PhotosLanding } from './components/photos/PhotosLanding';
 
 class App extends Component {
   render() {
@@ -18,7 +19,8 @@ class App extends Component {
           <div className="black-bg">
             <Navbar />
             <NavBarOptions />
-            <Route path="/" component={Landing} />
+            <Route path="/album" component={AlbumLanding} />
+            <Route path='/photos' component={PhotosLanding} />
           </div>
         </Router>
       </Provider>

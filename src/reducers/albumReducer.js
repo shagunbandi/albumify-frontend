@@ -33,7 +33,6 @@ export default function (state = initialState, action) {
       let prev_images = state.images.data;
       let images = action.payload;
       images.data = prev_images.concat(images.data);
-      // images.data = prev_images.reverse();
       return {
         ...state,
         images: action.payload,

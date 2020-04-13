@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import {
   incrementCount,
-} from '../../actions/searchActions';
+} from '../../actions/photosAction';
 
 export class ImageCard extends Component {
 

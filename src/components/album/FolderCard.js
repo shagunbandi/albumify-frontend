@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import {
     selectSubDirectoryGlobal
-} from '../../actions/searchActions';
+} from '../../actions/albumAction';
 
 export class FolderCard extends Component {
 

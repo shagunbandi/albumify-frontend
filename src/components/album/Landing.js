@@ -43,8 +43,8 @@ export class Landing extends Component {
 }
 
 const mapStateToProps = state => ({
-  loading: state.images.loading,
-  folder: state.images.folder,
+  loading: state.album.loading,
+  folder: state.album.folder,
 });
 
 export default connect(

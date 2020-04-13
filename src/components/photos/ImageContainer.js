@@ -51,8 +51,8 @@ export class ImageContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  images: state.images.images,
-  imageCount: state.images.imageCount,
+  images: state.album.images,
+  imageCount: state.album.imageCount,
 });
 
 export default connect(

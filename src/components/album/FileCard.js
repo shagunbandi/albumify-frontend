@@ -5,7 +5,7 @@ import {
     incrementCount,
 } from '../../actions/searchActions';
 
-export class FolderCard extends Component {
+export class FileCard extends Component {
 
     render() {
         const { fileData } = this.props;
@@ -27,4 +27,4 @@ export default connect(
     {
         incrementCount,
     }
-)(FolderCard);
+)(FileCard);

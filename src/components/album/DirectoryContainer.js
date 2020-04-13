@@ -80,8 +80,8 @@ export class DirectoryContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-    folder: state.images.folder,
-    currentDir: state.images.currentDir
+    folder: state.album.folder,
+    currentDir: state.album.currentDir
 });
 
 export default connect(

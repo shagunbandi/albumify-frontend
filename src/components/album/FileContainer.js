@@ -32,8 +32,8 @@ export class FileContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-    file: state.images.file,
-    currentDir: state.images.currentDir
+    file: state.album.file,
+    currentDir: state.album.currentDir
 });
 
 export default connect(

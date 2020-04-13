@@ -1,8 +1,8 @@
 import {
-    LOADING,
     FETCH_IMAGES,
     INCREMENT_COUNT,
     FETCH_MORE_IMAGES,
+    LOADING_PHOTOS,
 } from '../actions/types';
 
 const initialState = {
@@ -39,7 +39,7 @@ export default function (state = initialState, action) {
                 imageCount: state.imageCount + 1
             }
 
-        case LOADING:
+        case LOADING_PHOTOS:
             return {
                 ...state,
                 loading: true

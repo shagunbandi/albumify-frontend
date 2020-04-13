@@ -1,4 +1,4 @@
-import { LOADING, FILE_FOLDER_IMAGES, CURRENT_DIRECTORY } from './types';
+import { LOADING_ALBUM, FILE_FOLDER_IMAGES, CURRENT_DIRECTORY } from './types';
 import { BASE_URL } from './constants';
 import axios from 'axios';
 
@@ -22,9 +22,8 @@ export const selectSubDirectoryGlobal = (subDir) => {
   }
 }
 
-
 export const setLoading = () => {
   return {
-    type: LOADING
+    type: LOADING_ALBUM
   };
 };

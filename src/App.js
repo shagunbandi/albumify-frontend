@@ -8,8 +8,8 @@ import Navbar from './components/layout/Navbar';
 import NavBarOptions from './components/layout/NavBarOptions'
 
 import AlbumLanding from './components/album/AlbumLanding';
+import PhotosLanding from './components/photos/PhotosLanding';
 import store from './store';
-import { PhotosLanding } from './components/photos/PhotosLanding';
 
 class App extends Component {
   render() {

@@ -1,4 +1,4 @@
-import { LOADING, FETCH_IMAGES, INCREMENT_COUNT, FETCH_MORE_IMAGES } from './types';
+import { LOADING_PHOTOS, FETCH_IMAGES, INCREMENT_COUNT, FETCH_MORE_IMAGES } from './types';
 import { BASE_URL } from './constants';
 import axios from 'axios';
 
@@ -34,6 +34,6 @@ export const fetchImages = () => dispatch => {
 
 export const setLoading = () => {
     return {
-        type: LOADING
+        type: LOADING_PHOTOS
     };
 };

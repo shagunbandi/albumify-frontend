@@ -9,7 +9,7 @@ import {
 } from '../../actions/photosAction';
 
 
-export class PhotosLanding extends Component {
+export class FileContainer extends Component {
 
   componentDidUpdate(nextProps) {
     const { images, imageCount } = nextProps;
@@ -51,8 +51,8 @@ export class PhotosLanding extends Component {
 }
 
 const mapStateToProps = state => ({
-  images: state.album.images,
-  imageCount: state.album.imageCount,
+  images: state.photos.images,
+  imageCount: state.photos.imageCount,
 });
 
 export default connect(
@@ -60,4 +60,4 @@ export default connect(
   {
     getMoreImages
   }
-)(PhotosLanding);
+)(FileContainer);

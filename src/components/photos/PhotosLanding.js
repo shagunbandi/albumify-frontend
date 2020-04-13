@@ -14,7 +14,7 @@ import {
 
 export class PhotosLanding extends Component {
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.setLoading();
         this.props.fetchImages();
     }
@@ -30,7 +30,7 @@ export class PhotosLanding extends Component {
 }
 
 const mapStateToProps = state => ({
-    loading: state.album.loading,
+    loading: state.photos.loading,
 });
 
 export default connect(

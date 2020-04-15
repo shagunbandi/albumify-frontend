@@ -17,6 +17,7 @@ What we have is, just launch your server on any folder, it will analyse its cont
 Run the main.py file with location of your folder containing images, and sub folders on Images. 
 
 ```bash
+pip install requirements.txt
 python main.py <Location to your Photos Folder>
 ```
 

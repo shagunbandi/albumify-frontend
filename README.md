@@ -16,18 +16,20 @@ What we have is, just launch your server on any folder, it will analyse its cont
 
 Run the main.py file with location of your folder containing images, and sub folders on Images. 
 
-`cd PhotoAlbum` && `python main.py <Location to your Photos Folder>`
+```bash
+python main.py <Location to your Photos Folder>
+```
 
-This will run the python server on localhost:8000
+This will run the python server on `localhost:8000`
 
 ### Frontend
 
 Install the required node_modules, and start the server
 
-`cd PhotoAlbumReact`
+```bash
+cd PhotoAlbumReact
+npm i
+npm start
+```
 
-`npm i`
-
-`npm start`
-
-
+This will run the react development server on `localhost:3000`, or you can build the files and and run.

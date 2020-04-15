@@ -1,0 +1,36 @@
+.main-container {
+    /* margin-left: 0px;
+    margin-right: 0px; */
+    text-align: center;
+}
+
+.image-card {
+    margin: 4px;
+    max-height: 200px;
+}
+
+img {
+    image-orientation: from-image;
+}
+
+.folder-card {
+    width: auto;
+    margin: 5px;
+}
+
+.file-card {
+    height: 200px;
+    margin: 4px;
+}
+
+.file-card-image {
+    height: 200px;
+}
+
+.grey-navbar {
+    background-color: lightgray;
+}
+
+.breadcums-nav {
+    border-radius: 0px;
+}

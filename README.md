@@ -37,29 +37,29 @@ This will run the react development server on `localhost:3000`, or you can build
 
 ### What do we have right now ??
 
-Backend APIs: 
+#### Backend APIs: 
   1. All Photos in all the sub-directory.
   2. All the Photos, Directory Wise.
 
-Client Side: 
+#### Client Side: 
   1. Photos Tab, this has all the photos
   2. Album Tab, this has All the photos, directory-wise.
 
 ### What is Coming ??
 
-Client Side :
+#### Client Side :
   1. Open Image Viewer when selecting a photo.
   2. Create New Albums. 
   3. Remove the Directory Album if needed.
   4. Sort/Search by Metadata/Tags.
 
-Back End:
+#### Back End:
   1. Return Metadata.
   2. Image Recognition, and tag images as well.
   3. Create Thumbnails, for faster Data Load.
   4. Create Database of some sort, to store File Paths, Image Tags.
   5. Make an offline Image Tagging Model
   
- Others:
+####  Others:
   1. Make an executable to run the the project more easily.
       a. Use ocliff commands. 

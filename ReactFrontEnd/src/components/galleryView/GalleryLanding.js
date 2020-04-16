@@ -10,17 +10,12 @@ import {
 
 export class GalleryLanding extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      images: [],
-      current: null
+  _onHeaderClick = (event) => {
+    event.preventDefault();
+    if (event.currentTarget === event.target) {
+      this.props.closeGalleryView();
     }
-  }
 
-  componentDidMount() {
-    // let {images, current} = this.props.images;
-    // this.setState({images, current });
   }
 
   render() {
@@ -35,7 +30,7 @@ export class GalleryLanding extends Component {
     let smallContent = images.map((image, index) => {
       let imageURL = "http://localhost:8000/" + image;
       return (
-        <img className="gallery-image-small" src={imageURL} alt={image} onClick={() => {
+        <img className="gallery-image-small" key={index} src={imageURL} alt={image} onClick={() => {
           this.props.setCurrentValue(index);
         }} />
       )
@@ -44,7 +39,7 @@ export class GalleryLanding extends Component {
     // let content = "Content";
 
     return (
-      <div className="gallery-container">
+      <div className="gallery-container" onClick={this._onHeaderClick}>
         <div className='container'>
           <div className='gallery-main-image'>
             <div className="cross" onClick={() => {

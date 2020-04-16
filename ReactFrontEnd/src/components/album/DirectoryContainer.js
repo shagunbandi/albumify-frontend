@@ -46,12 +46,14 @@ export class DirectoryContainer extends Component {
         folderPathList = folderPathList.map((folderPath, i) => {
             if (i !== folderPathList.length - 1) {
                 return <li
+                    key={i}
                     className='breadcrumb-item'
                     onClick={() => this.props.selectSubDirectoryGlobal(folderPath.slice(0, folderPath.length - 1))}
                 ><span>{folerNameList[i]}</span></li>
             }
             else {
                 return <li
+                    key={i}
                     className='breadcrumb-item active'
                     onClick={() => this.props.selectSubDirectoryGlobal(folderPath.slice(0, folderPath.length - 1))}
                 ><span>{folerNameList[i]}</span></li>
@@ -61,7 +63,7 @@ export class DirectoryContainer extends Component {
         return (
             <div>
                 <nav aria-label="breadcrumb" className="breadcums-nav">
-                    <ol class="breadcrumb">
+                    <ol className="breadcrumb">
                         {folderPathList}
                     </ol>
                 </nav>

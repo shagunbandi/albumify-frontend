@@ -8,7 +8,6 @@ import {
 export class FileCard extends Component {
 
     showGalleryView = () => {
-        console.log(this.props)
         const { images, current } = this.props;
         this.props.setGalleryComponents({
             current: current,

@@ -10,12 +10,23 @@ import {
 
 export class GalleryLanding extends Component {
 
-  _onHeaderClick = (event) => {
+  closeGallery = (event) => {
     event.preventDefault();
     if (event.currentTarget === event.target) {
       this.props.closeGalleryView();
     }
+  }
 
+  nextImage = () => {
+    const { current, images } = this.props;
+    const next = (current + 1) % images.length;
+    this.props.setCurrentValue(next)
+  }
+
+  prevImage = () => {
+    const { current, images } = this.props;
+    const next = (current - 1 + images.length) % images.length;
+    this.props.setCurrentValue(next)
   }
 
   render() {
@@ -36,15 +47,15 @@ export class GalleryLanding extends Component {
       )
     })
 
-    // let content = "Content";
+    // let content = "Content";this.props.closeGalleryView()
 
     return (
-      <div className="gallery-container" onClick={this._onHeaderClick}>
+      <div className="gallery-container" onClick={this.closeGallery}>
         <div className='container'>
           <div className='gallery-main-image'>
-            <div className="cross" onClick={() => {
-              this.props.closeGalleryView()
-            }}>close</div>
+            <div className="cross" onClick={() => { this.props.closeGalleryView() }}>close</div>
+            <div className="prev" onClick={this.prevImage}>prev</div>
+            <div className="next" onClick={this.nextImage}>next</div>
             {mainImage}
           </div>
           <div className='gallery-small-images'>

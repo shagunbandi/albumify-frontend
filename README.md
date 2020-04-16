@@ -52,6 +52,7 @@ This will run the react development server on `localhost:3000`, or you can build
   2. Create New Albums. 
   3. Remove the Directory Album if needed.
   4. Sort/Search by Metadata/Tags.
+  5. Make a Music Video from your Photos.
 
 #### Back End:
   1. Return Metadata.
@@ -63,3 +64,13 @@ This will run the react development server on `localhost:3000`, or you can build
 ####  Others:
   1. Make an executable to run the the project more easily.
       a. Use ocliff commands. 
+      
+--- 
+
+#### How I did it
+  - Make a BackEnd to expose APIs
+  - Make a Front End to Display Data
+  - Make a single page having all photos
+  - Make the API returning directory wise data
+  - Make another tab displaying data directory wise
+  - Load more data once previous is done, currently loaading 50 at a time

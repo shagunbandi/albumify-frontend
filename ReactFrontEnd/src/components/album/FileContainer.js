@@ -17,7 +17,7 @@ export class FileContainer extends Component {
             return (<h3>No Files Found !</h3>)
         }
         let content = file[currentDir].map((fileData, index) => (
-            <FileCard key={index} fileData={fileData} />
+            <FileCard key={index} fileData={fileData} images={file[currentDir]} current={index} />
         ))
         return (
             <div>

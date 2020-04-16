@@ -9,6 +9,7 @@ import NavBarOptions from './components/layout/NavBarOptions'
 
 import AlbumLanding from './components/album/AlbumLanding';
 import PhotosLanding from './components/photos/PhotosLanding';
+import GalleryLanding from './components/galleryView/GalleryLanding';
 import store from './store';
 
 class App extends Component {
@@ -19,8 +20,10 @@ class App extends Component {
           <div className="black-bg">
             <Navbar />
             <NavBarOptions />
+            <GalleryLanding/>
             <Route path="/album" component={AlbumLanding} />
             <Route path='/photos' component={PhotosLanding} />
+            
           </div>
         </Router>
       </Provider>

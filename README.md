@@ -53,6 +53,7 @@ This will run the react development server on `localhost:3000`, or you can build
   3. Remove the Directory Album if needed.
   4. Sort/Search by Metadata/Tags.
   5. Make a Music Video from your Photos.
+  6. Images in Grid Form.
 
 #### Back End:
   1. Return Metadata.

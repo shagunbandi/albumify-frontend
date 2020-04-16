@@ -1,5 +1,5 @@
 import {
-  GALLERY_COMPONENTS, GALLERY_CURRENT
+  GALLERY_COMPONENTS, GALLERY_CURRENT, CLOSE_GALLERY_VIEW
 } from '../actions/types';
 
 const initialState = {
@@ -15,6 +15,13 @@ export default function (state = initialState, action) {
       return {
         ...state,
         current: action.current
+      }
+
+    case CLOSE_GALLERY_VIEW:
+      return {
+        current: null,
+        show: false,
+        images: []
       }
 
     case GALLERY_COMPONENTS:

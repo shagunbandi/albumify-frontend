@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import {
-  setCurrentValue
+  setCurrentValue,
+  closeGalleryView,
 } from '../../actions/galleryAction';
 
 
@@ -46,6 +47,9 @@ export class GalleryLanding extends Component {
       <div className="gallery-container">
         <div className='container'>
           <div className='gallery-main-image'>
+            <div className="cross" onClick={() => {
+              this.props.closeGalleryView()
+            }}>close</div>
             {mainImage}
           </div>
           <div className='gallery-small-images'>
@@ -65,5 +69,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { setCurrentValue }
+  { setCurrentValue, closeGalleryView }
 )(GalleryLanding);

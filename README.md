@@ -48,30 +48,28 @@ This will run the react development server on `localhost:3000`, or you can build
 ### What is Coming ??
 
 #### Client Side :
-  1. Open Image Viewer when selecting a photo.
-  2. Create New Albums. 
-  3. Remove the Directory Album if needed.
-  4. Sort/Search by Metadata/Tags.
-  5. Make a Music Video from your Photos.
-  6. Images in Grid Form.
+  - ~~Make a Front End to Display Data~~
+  - ~~Make a single page having all photos~~
+  - ~~Make another tab displaying data directory wise~~
+  - ~~Load more data once previous is done, currently loaading 50 at a time~~
+  - ~~Open Image Viewer when selecting a photo.~~
+  - Scroll to the selected Image when Image viewer Opened
+  - Create New Albums. 
+  - Remove the Directory Album if needed.
+  - Sort/Search by Metadata/Tags.
+  - Make a Music Video from your Photos.
+  - Images in Grid Form.
 
 #### Back End:
-  1. Return Metadata.
-  2. Image Recognition, and tag images as well.
-  3. Create Thumbnails, for faster Data Load.
-  4. Create Database of some sort, to store File Paths, Image Tags.
-  5. Make an offline Image Tagging Model
+  - ~~Create Dango Backend to expose APIs~~
+  - ~~API returning Directory wise Data~~
+  - ~~API returnng all image related files~~
+  - Create Database of some sort, to store File Paths, Image Tags, to increase load rate.
+  - Return Metadata.
+  - Image Recognition, and tag images as well.
+  - Create Thumbnails, for faster Data Load.
+  - Make an offline Image Tagging Model
   
 ####  Others:
   1. Make an executable to run the the project more easily.
       a. Use ocliff commands. 
-      
---- 
-
-#### How I did it
-  - Make a BackEnd to expose APIs
-  - Make a Front End to Display Data
-  - Make a single page having all photos
-  - Make the API returning directory wise data
-  - Make another tab displaying data directory wise
-  - Load more data once previous is done, currently loaading 50 at a time

@@ -4,7 +4,7 @@ function Navbar() {
   return (
 
     <nav className="navbar navbar-expand-lg navbar-dark justify-content-center bg-black">
-      <span className="navbar-brand border-bottom-white">Photo Album Here</span>
+      <span className="navbar-brand border-bottom-white big-text">Albumify</span>
     </nav>
   );
 }

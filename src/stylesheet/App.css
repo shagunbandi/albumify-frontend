@@ -2,6 +2,10 @@ body {
     background-color: #67737e;
 }
 
+.big-text{
+    font-size: 30px;
+}
+
 .pd-4 {
     padding: 4px;
 }

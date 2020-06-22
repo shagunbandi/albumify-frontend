@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export const getAllImagesWithPath = () => dispatch => {
   axios
-    .get(BASE_URL + '/api/folder')
+    .get(BASE_URL + 'api/folder')
     .then(response =>
       dispatch({
         type: FILE_FOLDER_IMAGES,

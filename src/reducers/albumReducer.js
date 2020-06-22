@@ -1,6 +1,5 @@
 import {
   LOADING_ALBUM,
-  INCREMENT_COUNT,
   FILE_FOLDER_IMAGES,
   CURRENT_DIRECTORY,
   FALSE_RESPONSE
@@ -43,12 +42,6 @@ export default function (state = initialState, action) {
         rootDir: action.payload.data.root,
         currentDir: action.payload.data.root,
         loading: false
-      }
-
-    case INCREMENT_COUNT:
-      return {
-        ...state,
-        imageCount: state.imageCount + 1
       }
 
     case LOADING_ALBUM:

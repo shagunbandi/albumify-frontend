@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
+import { BASE_URL} from '../../actions/constants'
+
 import {
   setCurrentValue,
   closeGalleryView,
@@ -36,10 +38,16 @@ export class GalleryLanding extends Component {
 
     const { current, images } = this.props;
 
-    let imageUrl = "http://localhost:8000/" + images[current];
-    let mainImage = <img src={imageUrl} className="gallery-image" alt="" />
+    let imageUrl = BASE_URL + images[current];
+    let mainImage = <img src={imageUrl} className="gallery-image" alt=""/>
     let smallContent = images.map((image, index) => {
-      let imageURL = "http://localhost:8000/" + image;
+      let imageURL = BASE_URL + image;
+      if (index === current) return (
+        <img className="gallery-image-small active" key={index} src={imageURL} alt={image} onClick={() => {
+          this.props.setCurrentValue(index);
+        }} />
+      )
+
       return (
         <img className="gallery-image-small" key={index} src={imageURL} alt={image} onClick={() => {
           this.props.setCurrentValue(index);
@@ -51,11 +59,14 @@ export class GalleryLanding extends Component {
 
     return (
       <div className="gallery-container" onClick={this.closeGallery}>
-        <div className='container'>
+        <div className='gallery-container-holder container'>
           <div className='gallery-main-image'>
-            <div className="cross" onClick={() => { this.props.closeGalleryView() }}>close</div>
-            <div className="prev" onClick={this.prevImage}>prev</div>
-            <div className="next" onClick={this.nextImage}>next</div>
+            <div className="cross">
+              <div className="btn btn-dark btn-gall" onClick={() => { this.props.closeGalleryView() }}>close</div>
+              <div className="btn btn-dark btn-gall" onClick={this.prevImage}>prev</div>
+              <div className="btn btn-dark btn-gall" onClick={this.nextImage}>next</div>
+              {/* <a href={imageUrl} className="btn btn-dark btn-gall">open</a> */}
+            </div>
             {mainImage}
           </div>
           <div className='gallery-small-images'>

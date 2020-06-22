@@ -30,9 +30,9 @@ export class AlbumLanding extends Component {
   render() {
     const { loading } = this.props;
     return (
-      <div className="main-container">
+      <div className="bg-greyish">
         {loading ? <Spinner /> : <DirectoryContainer />}
-        <hr />
+        <br/>
         {loading ? <Spinner /> : <FileContainer />}
       </div>
     );
@@ -41,7 +41,6 @@ export class AlbumLanding extends Component {
 
 const mapStateToProps = state => ({
   loading: state.album.loading,
-  folder: state.album.folder,
 });
 
 export default connect(

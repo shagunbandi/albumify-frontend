@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { HashRouter as Router, Route } from 'react-router-dom';
 
-import './App.css';
+import './stylesheet/App.css';
 
 import Navbar from './components/layout/Navbar';
 import NavBarOptions from './components/layout/NavBarOptions'
@@ -20,10 +20,9 @@ class App extends Component {
           <div className="black-bg">
             <Navbar />
             <NavBarOptions />
-            <GalleryLanding/>
+            <GalleryLanding />
             <Route path="/album" component={AlbumLanding} />
             <Route path='/photos' component={PhotosLanding} />
-            
           </div>
         </Router>
       </Provider>

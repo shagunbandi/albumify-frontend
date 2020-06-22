@@ -25,7 +25,7 @@ export class FolderCard extends Component {
         folderName = folderName[folderName.length - 1];
         return (
             <div className="card folder-card" onClick={this.selectSubDirectory}>
-                <div className="card-body">
+                <div className="card-body btn btn-dark">
                     <h5 className="card-title">{folderName}</h5>
                 </div>
             </div>

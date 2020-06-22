@@ -62,7 +62,7 @@ export class DirectoryContainer extends Component {
 
         return (
             <div>
-                <nav aria-label="breadcrumb" className="breadcums-nav">
+                <nav className="breadcums-nav">
                     <ol className="breadcrumb">
                         {folderPathList}
                     </ol>

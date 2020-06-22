@@ -26,9 +26,9 @@ export default function (state = initialState, action) {
       }
 
     case FILE_FOLDER_IMAGES:
-      console.log("GOT FOLDER FILE DATA");
       return {
         ...state,
+        response: "Success",
         folder: action.payload.data.folder,
         file: action.payload.data.file,
         rootDir: action.payload.data.root,

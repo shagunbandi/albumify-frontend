@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import ImageCard from './ImageCard';
 
-export class FileContainer extends Component {
+export class ImageContainer extends Component {
 
   constructor(props) {
     super(props);
@@ -26,42 +26,61 @@ export class FileContainer extends Component {
 
   loadMoreImages() {
     let { imagesLoaded, loadNextOn } = this.state;
-    let { images } = this.props;
-    if (images.response !== 'Success') {
+    let { data, metadata } = this.props;
+    if (metadata.response !== 'Success') {
       return;
     }
-    imagesLoaded = images.data.slice(0, loadNextOn + 50);
+    imagesLoaded = data.slice(0, loadNextOn + 50);
     this.setState({ imagesLoaded, loadNextOn: loadNextOn + 50 });
   }
 
-  componentDidMount() {
-    let { images } = this.props;
-    if (images.response !== 'Success') {
+  componentWillReceiveProps(nextProps) {
+    if (this.props === nextProps) {
+      return;
+    }
+
+    let { data, metadata } = nextProps;
+    if (metadata.response !== 'Success') {
       this.setState({ response: false });
     }
     else {
-      this.setState({ imageCount: 0, imagesLoaded: images.data.slice(0, 50), loadNextOn: 50, response: true });
+      this.setState({ imageCount: 0, imagesLoaded: data.slice(0, 50), loadNextOn: 50, response: true });
+    }
+
+  }
+
+  componentDidMount() {
+    let { data, metadata } = this.props;
+    if (metadata.response !== 'Success') {
+      this.setState({ response: false });
+    }
+    else {
+      this.setState({ imageCount: 0, imagesLoaded: data.slice(0, 50), loadNextOn: 50, response: true });
     }
   }
 
   render() {
     let content = this.state.response ? this.state.imagesLoaded.map((image, index) => (
-      <ImageCard key={index} image={image} loadedAnotherImage={this.loadedAnotherImage.bind(this)} />
+      <li className="image-li">
+        <ImageCard key={index} image={image} current={index} images={this.props.data} loadedAnotherImage={this.loadedAnotherImage.bind(this)} />
+      </li>
     )) : "Content Could not be loaded :( ";
 
     return (
       <div>
-        {content}
+        <ul className="image-ul">
+          {content}
+          <li className="image-li"></li>
+        </ul>
       </div >
     );
   }
 }
 
 const mapStateToProps = state => ({
-  images: state.photos.images,
   dataLoaded: state.photos.dataLoaded
 });
 
 export default connect(
   mapStateToProps
-)(FileContainer);
+)(ImageContainer);

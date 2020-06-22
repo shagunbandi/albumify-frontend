@@ -2,7 +2,8 @@ import {
   LOADING_ALBUM,
   INCREMENT_COUNT,
   FILE_FOLDER_IMAGES,
-  CURRENT_DIRECTORY
+  CURRENT_DIRECTORY,
+  FALSE_RESPONSE
 } from '../actions/types';
 
 const initialState = {
@@ -13,12 +14,20 @@ const initialState = {
   folder: {},
   file: {},
   rootDir: '',
-  currentDir: ''
+  currentDir: '',
+  response: true
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
 
+    case FALSE_RESPONSE: 
+      return {
+        ...state,
+        response: false,
+        loading: false
+      }
+      
     case CURRENT_DIRECTORY:
       return {
         ...state,

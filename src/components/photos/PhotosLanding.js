@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import {ImageContainer} from '../imageContainer/ImageContainer'
+import { ImageContainer } from '../imageContainer/ImageContainer'
 
 import Spinner from '../layout/Spinner';
 
@@ -10,6 +10,7 @@ import {
     setLoading,
     fetchImages
 } from '../../actions/photosAction';
+import Instructions from '../instructions';
 
 
 export class PhotosLanding extends Component {
@@ -22,16 +23,21 @@ export class PhotosLanding extends Component {
     }
 
     render() {
-        const { loading } = this.props;
+        const { loading, response } = this.props;
         return (
             <div className="pd-4">
-                {loading ? <Spinner /> : <ImageContainer data={this.props.images.data} metadata={this.props.images}/>}
+                {
+                    loading ? <Spinner /> :
+                        !response ? <Instructions /> :
+                            <ImageContainer data={this.props.images.data} metadata={this.props.images} />
+                }
             </div>
         );
     }
 }
 
 const mapStateToProps = state => ({
+    response: state.photos.response,
     images: state.photos.images,
     loading: state.photos.loading,
     dataLoaded: state.photos.dataLoaded

@@ -12,6 +12,7 @@ import {
   getAllImagesWithPath,
   selectSubDirectoryGlobal
 } from '../../actions/albumAction';
+import Instructions from '../instructions';
 
 
 export class AlbumLanding extends Component {
@@ -28,12 +29,18 @@ export class AlbumLanding extends Component {
   }
 
   render() {
-    const { loading } = this.props;
+    const { loading, response } = this.props;
     return (
       <div className="bg-greyish">
-        {loading ? <Spinner /> : <DirectoryContainer />}
-        <br/>
-        {loading ? <Spinner /> : <FileContainer />}
+        {
+          loading ? <Spinner /> :
+          !response ? <Instructions/> :(
+          <span>
+            <DirectoryContainer />
+            <br />
+            <FileContainer />
+          </span>
+        )}
       </div>
     );
   }
@@ -41,6 +48,7 @@ export class AlbumLanding extends Component {
 
 const mapStateToProps = state => ({
   loading: state.album.loading,
+  response: state.album.response
 });
 
 export default connect(

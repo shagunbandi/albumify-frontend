@@ -1,4 +1,4 @@
-import { LOADING_PHOTOS, FETCH_IMAGES } from './types';
+import { LOADING_PHOTOS, FETCH_IMAGES, FALSE_RESPONSE } from './types';
 import { BASE_URL } from './constants';
 import axios from 'axios';
 
@@ -11,7 +11,13 @@ export const fetchImages = () => dispatch => {
                 payload: response.data
             })
         )
-        .catch(err => console.log(err));
+        .catch(err => {
+            console.log(err)
+            dispatch({
+                type: FALSE_RESPONSE,
+                payload: false
+            })
+        })
 };
 
 export const setLoading = () => {

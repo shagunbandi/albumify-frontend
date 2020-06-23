@@ -21,6 +21,11 @@ body {
     color: grey;
 }
 
+.breadcrumb-item:hover {
+    cursor: pointer;
+    color: white;
+}
+
 .breadcrumb-item.active {
     color: white;
 }
@@ -76,15 +81,17 @@ img {
 
 .gallery-main-image {
     position: relative;
-    margin-top: 0px;
-    height: 70vh;
-    text-align: center;
-    background-color: black
+    height: 80%;
+    background-color: black;
+    white-space: nowrap;
+    text-align: center; 
+    margin: 1em 0;
+
 }
 
 .gallery-small-images {
     overflow: scroll;
-    height: 20vh;
+    height: 20%;
     margin-top: 10px;
     white-space: nowrap;
     background-color: black;
@@ -92,7 +99,7 @@ img {
 }
 .gallery-image {
     max-width: 100%;
-    max-height: 70vh;
+    max-height: 100%;
 }
 
 .gallery-image-small:hover {
@@ -136,6 +143,7 @@ img {
 .image-li {
   height: 20vh;
   flex-grow: 1;
+  /* border: 1px solid  black; */
 }
 
 .image-li:last-child {
@@ -146,9 +154,9 @@ img {
   max-height: 100%;
   min-width: 100%;
   object-fit: cover;
-  vertical-align: bottom;
+  vertical-align: middle;
   padding: 4px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .image-card:hover {
@@ -183,4 +191,10 @@ img {
   .image-card {
       padding: 2px;
   }
+}
+
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
 }

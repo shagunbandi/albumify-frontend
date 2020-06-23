@@ -39,7 +39,6 @@ export class GalleryLanding extends Component {
     const { current, images } = this.props;
 
     let imageUrl = BASE_URL + images[current];
-    let mainImage = <img src={imageUrl} className="gallery-image" alt=""/>
     let smallContent = images.map((image, index) => {
       let imageURL = BASE_URL + image;
       if (index === current) return (
@@ -67,7 +66,8 @@ export class GalleryLanding extends Component {
               <div className="btn btn-dark btn-gall" onClick={this.nextImage}>next</div>
               {/* <a href={imageUrl} className="btn btn-dark btn-gall">open</a> */}
             </div>
-            {mainImage}
+            <span class="helper"></span>
+            <img src={imageUrl} className="gallery-image" alt="" />
           </div>
           <div className='gallery-small-images'>
             {smallContent}

@@ -7,10 +7,11 @@ import './stylesheet/App.css';
 import Navbar from './components/layout/Navbar';
 import NavBarOptions from './components/layout/NavBarOptions'
 
-import AlbumLanding from './components/album/AlbumLanding';
+import DirectoryLanding from './components/directory/DirectoryLanding';
 import PhotosLanding from './components/photos/PhotosLanding';
 import GalleryLanding from './components/galleryView/GalleryLanding';
 import store from './store';
+import AlbumLanding from './components/album/AlbumLanding';
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             <Navbar />
             <NavBarOptions />
             <GalleryLanding />
+            <Route path="/directory" component={DirectoryLanding} />
             <Route path="/album" component={AlbumLanding} />
             <Route path='/photos' component={PhotosLanding} />
           </div>

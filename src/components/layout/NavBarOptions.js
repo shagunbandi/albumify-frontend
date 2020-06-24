@@ -10,6 +10,10 @@ function NavbarOptions() {
                 <button className="btn btn-dark">All Photos</button>
             </Link>
 
+            <Link className="navbar-brand nav-item" to="/directory">
+                <button className="btn btn-dark">Directory</button>
+            </Link>
+
             <Link className="navbar-brand nav-item" to="/album">
                 <button className="btn btn-dark">Albums</button>
             </Link>

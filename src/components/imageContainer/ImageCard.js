@@ -34,7 +34,7 @@ export class ImageCard extends Component {
 }
 
 const mapStateToProps = state => ({
-  imageCount: state.album.imageCount,
+  imageCount: state.directory.imageCount,
 });
 
 

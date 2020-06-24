@@ -2,7 +2,9 @@ import {
   LOADING_ALBUM,
   FILE_FOLDER_IMAGES,
   CURRENT_DIRECTORY,
-  FALSE_RESPONSE
+  FALSE_RESPONSE,
+  ALBUM_IMAGES,
+  ADD_ALBUM
 } from '../actions/types';
 
 const initialState = {
@@ -14,7 +16,8 @@ const initialState = {
   file: {},
   rootDir: '',
   currentDir: '',
-  response: true
+  response: true,
+  addAlbum: false
 };
 
 export default function (state = initialState, action) {
@@ -41,9 +44,35 @@ export default function (state = initialState, action) {
         file: action.payload.data.file,
         rootDir: action.payload.data.root,
         currentDir: action.payload.data.root,
-        loading: false
+        loading: false,
+        addAlbum: false
+      }
+    
+    case ADD_ALBUM:
+      console.log(action.payload.data)
+      return {
+        ...state,
+        response: "Success",
+        folder: action.payload.data.folder,
+        file: action.payload.data.file,
+        rootDir: action.payload.data.root,
+        currentDir: action.payload.data.root,
+        loading: false,
+        addAlbum: true
       }
 
+    case ALBUM_IMAGES: 
+      return {
+        ...state,
+        response: "Success",
+        folder: action.payload.data.folder,
+        file: action.payload.data.file,
+        rootDir: action.payload.data.root,
+        currentDir: action.payload.data.root,
+        loading: false,
+        addAlbum: true
+      }
+      
     case LOADING_ALBUM:
       return {
         ...state,

@@ -9,17 +9,17 @@ import Spinner from '../layout/Spinner';
 
 import {
   setLoading,
-  getAllAlbumsWithPath,
+  getAllImagesWithPath,
   selectSubDirectoryGlobal
 } from '../../actions/directoryAction';
 import Instructions from '../instructions';
 
 
-export class AlbumLanding extends Component {
+export class DirectoryLanding extends Component {
 
   componentWillMount() {
     this.props.setLoading();
-    this.props.getAllAlbumsWithPath();
+    this.props.getAllImagesWithPath();
   }
 
   componentDidMount() {
@@ -56,6 +56,6 @@ export default connect(
   {
     setLoading,
     selectSubDirectoryGlobal,
-    getAllAlbumsWithPath,
+    getAllImagesWithPath,
   }
-)(AlbumLanding);
+)(DirectoryLanding);

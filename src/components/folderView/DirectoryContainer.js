@@ -7,7 +7,7 @@ import FolderCard from './FolderCard';
 import {
     setLoading,
     selectSubDirectoryGlobal
-} from '../../actions/albumAction';
+} from '../../actions/directoryAction';
 
 
 export class DirectoryContainer extends Component {
@@ -17,10 +17,9 @@ export class DirectoryContainer extends Component {
         console.log("Clicked");
     }
 
-    render() {
-        const { currentDir, folder } = this.props;
-        let subFolders = folder[currentDir];
-
+    getBackDir(currentDir) {
+        // Get Back Dir URL
+        // If Already Root, home/Back else, home/dir1/dir2/Back
         let backDir = currentDir.split('/');
         if (backDir.length === 1) {
             backDir = backDir[0];
@@ -29,14 +28,15 @@ export class DirectoryContainer extends Component {
             backDir = backDir.slice(0, backDir.length - 1).join('/');
         }
         backDir += '/Back'
+        return backDir;
+    }
 
-        let content = [<FolderCard key={'-1'} folderData={backDir} isBackDir={true} />]
-        if (subFolders) {
-            content.push(subFolders.map((folderData, index) => (
-                <FolderCard key={index} folderData={folderData} isBackDir={false} />
-            )))
-        }
+    addButton(currentDir) {
+        return currentDir + '/Add Button';
+    }
 
+    getFolderPathList(currentDir) {
+        // Get Folder Array for BreadCrums
         let prev = '';
         let folerNameList = currentDir.split('/')
         let folderPathList = folerNameList.map((folderName, i) => {
@@ -59,6 +59,27 @@ export class DirectoryContainer extends Component {
                 ><span>{folerNameList[i]}</span></li>
             }
         })
+        return folderPathList;
+    }
+
+    render() {
+        const { currentDir, folder, addAlbum } = this.props;
+            
+        let subFolders = folder[currentDir];
+        let backDir = this.getBackDir(currentDir);
+        let folderPathList = this.getFolderPathList(currentDir);
+        let content = [<FolderCard key={'-1'} folderData={backDir} isBackDir={true} addAlbum={false} />]
+        if (subFolders) {
+            content.push(subFolders.map((folderData, index) => (
+                <FolderCard key={index} folderData={folderData} isBackDir={false} addAlbum={false}/>
+            )))
+        }
+        if (addAlbum) {
+            let addBut = this.addButton(currentDir);
+            content.push(
+                <FolderCard key={currentDir.length} folderData={addBut} isBackDir={false} addAlbum={true} />
+            )
+        }
 
         return (
             <div>
@@ -75,15 +96,15 @@ export class DirectoryContainer extends Component {
                             </div>
                         </div> : ''
                 }
-
             </div >
         );
     }
 }
 
 const mapStateToProps = state => ({
-    folder: state.album.folder,
-    currentDir: state.album.currentDir
+    folder: state.directory.folder,
+    currentDir: state.directory.currentDir,
+    addAlbum: state.directory.addAlbum
 });
 
 export default connect(

@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "http://localhost:3000",
   "dependencies": {
+    "arrow-keys-react": "^1.0.6",
     "axios": "^0.18.0",
     "bootstrap": "^4.4.1",
     "gh-pages": "^2.0.1",

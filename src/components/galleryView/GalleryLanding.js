@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { BASE_URL} from '../../actions/constants'
+import { BASE_URL } from '../../actions/constants'
+
+import ArrowKeysReact from 'arrow-keys-react';
 
 import {
   setCurrentValue,
@@ -32,6 +34,18 @@ export class GalleryLanding extends Component {
   }
 
   render() {
+
+    ArrowKeysReact.config({
+      left: () => {
+        this.prevImage()
+      },
+      right: () => {
+        this.nextImage();
+      }
+    });
+
+
+
     if (!this.props.show) {
       return null;
     }
@@ -42,7 +56,7 @@ export class GalleryLanding extends Component {
     let smallContent = images.map((image, index) => {
       let imageURL = BASE_URL + image;
       if (index === current) return (
-        <img className="gallery-image-small active" key={index} src={imageURL} alt={image} onClick={() => {
+        <img className="gallery-image-small active" key={index} src={imageURL} alt={image} loading="eager" onClick={() => {
           this.props.setCurrentValue(index);
         }} />
       )
@@ -57,14 +71,13 @@ export class GalleryLanding extends Component {
     // let content = "Content";this.props.closeGalleryView()
 
     return (
-      <div className="gallery-container" onClick={this.closeGallery}>
+      <div {...ArrowKeysReact.events} tabIndex="1" className="gallery-container" onClick={this.closeGallery}>
         <div className='gallery-container-holder container'>
           <div className='gallery-main-image'>
             <div className="cross">
               <div className="btn btn-dark btn-gall" onClick={() => { this.props.closeGalleryView() }}>close</div>
               <div className="btn btn-dark btn-gall" onClick={this.prevImage}>prev</div>
               <div className="btn btn-dark btn-gall" onClick={this.nextImage}>next</div>
-              {/* <a href={imageUrl} className="btn btn-dark btn-gall">open</a> */}
             </div>
             <span class="helper"></span>
             <img src={imageUrl} className="gallery-image" alt="" />

@@ -17,7 +17,8 @@ const initialState = {
   rootDir: '',
   currentDir: '',
   response: true,
-  addAlbum: false
+  addAlbum: false,
+  addAlbumResponse: false
 };
 
 export default function (state = initialState, action) {
@@ -50,15 +51,22 @@ export default function (state = initialState, action) {
     
     case ADD_ALBUM:
       console.log(action.payload.data)
+      if(action.payload.response === "Success") {
+        return {
+          ...state,
+          addAlbumResponse: "Success",
+          folder: action.payload.data.folder,
+          file: action.payload.data.file,
+          rootDir: action.payload.data.root,
+          currentDir: action.payload.current_directory,
+          loading: false,
+          addAlbum: true
+        }
+      }
       return {
         ...state,
-        response: "Success",
-        folder: action.payload.data.folder,
-        file: action.payload.data.file,
-        rootDir: action.payload.data.root,
-        currentDir: action.payload.data.root,
-        loading: false,
-        addAlbum: true
+        addAlbumResponse: "Fail",
+        message: action.payload.response.message
       }
 
     case ALBUM_IMAGES: 

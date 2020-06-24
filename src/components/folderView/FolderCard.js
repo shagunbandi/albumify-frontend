@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-
 import {
     selectSubDirectoryGlobal,
-    addAlbumAtPath,
 } from '../../actions/directoryAction';
 
 export class FolderCard extends Component {
-
     selectSubDirectory = () => {
         const { folderData, isBackDir, addAlbum } = this.props;
         if (isBackDir) {
@@ -18,14 +15,12 @@ export class FolderCard extends Component {
             return;
         }
         if (addAlbum) {
-            let currentDir = folderData.split('/')
-            currentDir = currentDir.slice(0, currentDir.length - 1).join('/');
-            console.log("adding album at: " + currentDir);
-            this.props.addAlbumAtPath(currentDir, "new album");
+            this.props.handleShow();
             return;
         }
         this.props.selectSubDirectoryGlobal(folderData);
     }
+
 
     render() {
         const { folderData } = this.props;
@@ -50,6 +45,5 @@ export default connect(
     mapStateToProps,
     {
         selectSubDirectoryGlobal,
-        addAlbumAtPath
     }
 )(FolderCard);

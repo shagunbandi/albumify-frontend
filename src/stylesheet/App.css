@@ -198,3 +198,12 @@ img {
     height: 100%;
     vertical-align: middle;
 }
+
+.modal {
+    display: block !important;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.color-red {
+    color: red;
+}

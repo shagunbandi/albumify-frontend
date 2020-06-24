@@ -6,11 +6,24 @@ import FolderCard from './FolderCard';
 
 import {
     setLoading,
-    selectSubDirectoryGlobal
+    selectSubDirectoryGlobal,
+    addAlbumAtPath
 } from '../../actions/directoryAction';
 
 
 export class DirectoryContainer extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            showInputModal: false,
+            err_msg: ""
+        }
+    }
+
+    handleClose = () => this.setState({ showInputModal: false, err_msg:"" });
+    handleShow = () => this.setState({ showInputModal: true });
+
 
     selectSubDirectory() {
         this.props.selectSubDirectoryGlobal(this.props.currentDir);
@@ -18,8 +31,6 @@ export class DirectoryContainer extends Component {
     }
 
     getBackDir(currentDir) {
-        // Get Back Dir URL
-        // If Already Root, home/Back else, home/dir1/dir2/Back
         let backDir = currentDir.split('/');
         if (backDir.length === 1) {
             backDir = backDir[0];
@@ -34,9 +45,23 @@ export class DirectoryContainer extends Component {
     addButton(currentDir) {
         return currentDir + '/Add Button';
     }
+    
+    saveAlbum = () => {
+        const { currentDir, folder, addAlbumAtPath } = this.props;
+        if (this.albumNameValue.value.length < 1) {
+            this.setState({ err_msg: "album name cannot be empty" })
+        }
+        else if (folder[currentDir] !== undefined && folder[currentDir].includes(currentDir + "/" + this.albumNameValue.value)) {
+            this.setState({err_msg:"album name already exists"})
+        }
+        else {
+            addAlbumAtPath(currentDir, this.albumNameValue.value);
+            this.handleClose();
+        }
+    }
+
 
     getFolderPathList(currentDir) {
-        // Get Folder Array for BreadCrums
         let prev = '';
         let folerNameList = currentDir.split('/')
         let folderPathList = folerNameList.map((folderName, i) => {
@@ -77,10 +102,9 @@ export class DirectoryContainer extends Component {
         if (addAlbum) {
             let addBut = this.addButton(currentDir);
             content.push(
-                <FolderCard key={currentDir.length} folderData={addBut} isBackDir={false} addAlbum={true} />
+                <FolderCard key={currentDir.length} folderData={addBut} isBackDir={false} addAlbum={true} handleShow={this.handleShow} />
             )
         }
-
         return (
             <div>
                 <nav className="breadcums-nav">
@@ -96,6 +120,23 @@ export class DirectoryContainer extends Component {
                             </div>
                         </div> : ''
                 }
+                {this.state.showInputModal ?
+                    (<div class="modal" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Enter Album Name</label>
+                                        <input class="form-control" ref={(albumNameValue) => { this.albumNameValue = albumNameValue }} type="text" placeholder="New Album Name" />                                    </div>
+                                        <small id="emailHelp" class="form-text color-red">{this.state.err_msg}</small>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" onClick={this.saveAlbum} >Save changes</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onClick={this.handleClose}>Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>) : <span />}
             </div >
         );
     }
@@ -104,13 +145,15 @@ export class DirectoryContainer extends Component {
 const mapStateToProps = state => ({
     folder: state.directory.folder,
     currentDir: state.directory.currentDir,
-    addAlbum: state.directory.addAlbum
+    addAlbum: state.directory.addAlbum,
+    addAlbumResponse: state.directory.addAlbumResponse
 });
 
 export default connect(
     mapStateToProps,
     {
         setLoading,
-        selectSubDirectoryGlobal
+        selectSubDirectoryGlobal,
+        addAlbumAtPath
     }
 )(DirectoryContainer);

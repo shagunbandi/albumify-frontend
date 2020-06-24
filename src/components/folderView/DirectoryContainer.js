@@ -7,7 +7,8 @@ import FolderCard from './FolderCard';
 import {
     selectSubDirectoryGlobal,
     selectSubDirectoryGlobalPop,
-    addAlbumAtPath
+    addAlbumAtPath,
+    addAlbumAtPathPop
 } from '../../actions/directoryAction';
 
 
@@ -26,12 +27,19 @@ export class DirectoryContainer extends Component {
 
     selectSubDirectoryReducer = (dir) => {
         if (this.props.reducerSubName === 'directory') {
-            console.log("dire")
             this.props.selectSubDirectoryGlobal(dir);
         }
         else {
-            console.log("dire_pop")
             this.props.selectSubDirectoryGlobalPop(dir);
+        }
+    }
+
+    addAlbumAtPathReducer = (path, name) => {
+        if (this.props.reducerSubName === 'directory') {
+            this.props.addAlbumAtPath(path, name);
+        }
+        else {
+            this.props.addAlbumAtPathPop(path, name);
         }
     }
 
@@ -51,13 +59,9 @@ export class DirectoryContainer extends Component {
         backDir += '/Back'
         return backDir;
     }
-
-    addButton(currentDir) {
-        return currentDir + '/Add Button';
-    }
     
     saveAlbum = () => {
-        const { addAlbumAtPath, reducerSubName} = this.props
+        const { reducerSubName} = this.props
         const { currentDir, folder } = this.props.directory[reducerSubName];
         if (this.albumNameValue.value.length < 1) {
             this.setState({ err_msg: "album name cannot be empty" })
@@ -66,7 +70,7 @@ export class DirectoryContainer extends Component {
             this.setState({err_msg:"album name already exists"})
         }
         else {
-            addAlbumAtPath(currentDir, this.albumNameValue.value);
+            this.addAlbumAtPathReducer(currentDir, this.albumNameValue.value);
             this.handleClose();
         }
     }
@@ -112,7 +116,7 @@ export class DirectoryContainer extends Component {
             )))
         }
         if (addAlbum) {
-            let addBut = this.addButton(currentDir);
+            let addBut = currentDir + '/Add Button';
             content.push(
                 <FolderCard key={currentDir.length} folderData={addBut} isBackDir={false} addAlbum={true} handleShow={this.handleShow} selectSubDirectoryReducer={this.selectSubDirectoryReducer} />
             )
@@ -167,6 +171,7 @@ export default connect(
     {
         selectSubDirectoryGlobal,
         selectSubDirectoryGlobalPop,
-        addAlbumAtPath
+        addAlbumAtPath,
+        addAlbumAtPathPop
     }
 )(DirectoryContainer);

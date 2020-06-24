@@ -1,4 +1,4 @@
-import { LOADING_ALBUM, FILE_FOLDER_IMAGES, CURRENT_DIRECTORY, FALSE_RESPONSE, ALBUM_IMAGES, ADD_ALBUM, ALBUM_IMAGES_POP, LOADING_ALBUM_POP, CURRENT_DIRECTORY_POP } from './types';
+import { LOADING_ALBUM, FILE_FOLDER_IMAGES, CURRENT_DIRECTORY, ADD_ALBUM_POP, FALSE_RESPONSE, ALBUM_IMAGES, ADD_ALBUM, ALBUM_IMAGES_POP, LOADING_ALBUM_POP, CURRENT_DIRECTORY_POP } from './types';
 import { BASE_URL } from './constants';
 import axios from 'axios';
 
@@ -67,6 +67,27 @@ export const addAlbumAtPath = (path, name) => dispatch => {
     .then(response =>
       dispatch({
         type: ADD_ALBUM,
+        payload: response.data
+      })
+    )
+    .catch(err => {
+      console.log(err)
+      dispatch({
+        type: FALSE_RESPONSE,
+        payload: false
+      })
+    })
+};
+
+export const addAlbumAtPathPop = (path, name) => dispatch => {
+  axios
+    .post(BASE_URL + 'api/album', {
+      album_name: name,
+      album_path: path,
+    })
+    .then(response =>
+      dispatch({
+        type: ADD_ALBUM_POP,
         payload: response.data
       })
     )

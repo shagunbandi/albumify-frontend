@@ -104,7 +104,7 @@ export class ImageContainer extends Component {
         loadedAnotherImage={this.loadedAnotherImage.bind(this)}
         selectThisImage={this.selectThisImage}
         selectionMode={this.state.selectionMode}
-        selectedImages={this.state.selectedImages}/>
+        selectedImages={this.state.selectedImages} />
     )) : "Content Could not be loaded :( ";
 
     return (
@@ -113,16 +113,22 @@ export class ImageContainer extends Component {
           {content}
           <li className="image-li"></li>
         </ul>
-        {this.state.selectionMode ? 
+        {this.state.selectionMode ?
           <div className="bottom-panel">
             <button className="btn btn-dark" onClick={this.CallAndShowDirectory}>Add to Album</button>&nbsp;
-            <button className="btn btn-dark" onClick={() => this.setState({selectionMode: false, selectedImages:[]})}>Cancel</button>
+            <button className="btn btn-dark" onClick={() => this.setState({ selectionMode: false, selectedImages: [] })}>Cancel</button>
           </div>
           : <span />}
-        {this.state.showDirectory ? 
-          <div className="directory-container-pop">
-            <DirectoryContainer reducerSubName={'directory_pop'} />
-          </div>: <span />}
+        {this.state.showDirectory ?
+          <div className="modal">
+            <div className="directory-container-pop">
+              <DirectoryContainer reducerSubName={'directory_pop'} />
+              <div className="bottom-panel">
+                <button className="btn btn-dark" onClick={this.CallAndShowDirectory}>Select</button>&nbsp;
+              <button className="btn btn-dark" onClick={() => this.setState({ showDirectory: false })}>Cancel</button>
+              </div>
+            </div>
+          </div> : <span />}
       </div >
     );
   }

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import {
     setLoading,
 } from '../../actions/directoryAction';
-import { ImageContainer } from '../imageContainer/ImageContainer';
+import ImageContainer from '../imageContainer/ImageContainer';
 
 
 export class FileContainer extends Component {
@@ -19,15 +19,15 @@ export class FileContainer extends Component {
         
         return (
             <div>
-                <ImageContainer data={data} metadata={{response:"Success"}} />
+                <ImageContainer data={data} metadata={{ response: "Success" }} />
             </div >
         );
     }
 }
 
 const mapStateToProps = state => ({
-    file: state.directory.file,
-    currentDir: state.directory.currentDir
+    file: state.directory.directory.file,
+    currentDir: state.directory.directory.currentDir
 });
 
 export default connect(

@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 
-import { ImageContainer } from '../imageContainer/ImageContainer'
-
-import Spinner from '../layout/Spinner';
-
 export class Instructions extends Component {
 
     render() {

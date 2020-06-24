@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { ImageContainer } from '../imageContainer/ImageContainer'
+import ImageContainer from '../imageContainer/ImageContainer'
 
 import Spinner from '../layout/Spinner';
 
@@ -25,7 +25,7 @@ export class PhotosLanding extends Component {
     render() {
         const { loading, response } = this.props;
         return (
-            <div className="pd-4">
+            <div>
                 {
                     loading ? <Spinner /> :
                         !response ? <Instructions /> :

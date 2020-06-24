@@ -143,6 +143,7 @@ img {
 .image-li {
   height: 20vh;
   flex-grow: 1;
+  position: relative;
   /* border: 1px solid  black; */
 }
 
@@ -159,7 +160,12 @@ img {
   /* border: 1px solid black; */
 }
 
-.image-card:hover {
+.image-card.selection-mode:hover {
+    transform: scale(0.95);
+}
+
+.image-card.selection-mode.selected {
+    transform: scale(0.90);
     border: 2px solid white;
 }
 
@@ -206,4 +212,60 @@ img {
 
 .color-red {
     color: red;
+}
+
+.image-overlay{
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    transition-duration: 0.1s;
+    text-align: center;
+    display: table;
+}
+
+.image-overlay:hover{
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 50%;
+}
+
+.image-overlay:hover > .image-overlay-text {
+    display: table-cell;
+}
+
+.image-overlay-left {
+    left: 0;
+}
+
+.image-overlay-right {
+    right: 0;
+}
+
+.image-overlay-text {
+    color: white;
+    font-weight: bolder;
+    display: none;
+    vertical-align: middle;
+}
+
+.bottom-panel {
+    position: fixed;
+    padding: 10px;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+}
+
+.directory-container-pop {
+    position: fixed;
+    top: 10%;
+    height: 90%;
+    left: 10%;
+    width: 80%;
+    background-color: black
+    /* width: 80%;
+    left: 10%; */
 }

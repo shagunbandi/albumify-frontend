@@ -1,26 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import {
-    selectSubDirectoryGlobal,
-} from '../../actions/directoryAction';
-
 export class FolderCard extends Component {
     selectSubDirectory = () => {
-        const { folderData, isBackDir, addAlbum } = this.props;
+        const { folderData, isBackDir, addAlbum, selectSubDirectoryReducer } = this.props;
         if (isBackDir) {
             let prevDir = folderData.split('/')
             prevDir = prevDir.slice(0, prevDir.length - 1).join('/');
-            this.props.selectSubDirectoryGlobal(prevDir);
+            selectSubDirectoryReducer(prevDir);
             return;
         }
         if (addAlbum) {
             this.props.handleShow();
             return;
         }
-        this.props.selectSubDirectoryGlobal(folderData);
+        selectSubDirectoryReducer(folderData);
     }
-
 
     render() {
         const { folderData } = this.props;
@@ -37,13 +32,11 @@ export class FolderCard extends Component {
 }
 
 const mapStateToProps = state => ({
-    imageCount: state.directory.imageCount,
 });
 
 
 export default connect(
     mapStateToProps,
     {
-        selectSubDirectoryGlobal,
     }
 )(FolderCard);

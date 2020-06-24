@@ -1,4 +1,4 @@
-import { LOADING_ALBUM, FILE_FOLDER_IMAGES, CURRENT_DIRECTORY, FALSE_RESPONSE, ALBUM_IMAGES, ADD_ALBUM } from './types';
+import { LOADING_ALBUM, FILE_FOLDER_IMAGES, CURRENT_DIRECTORY, FALSE_RESPONSE, ALBUM_IMAGES, ADD_ALBUM, ALBUM_IMAGES_POP, LOADING_ALBUM_POP, CURRENT_DIRECTORY_POP } from './types';
 import { BASE_URL } from './constants';
 import axios from 'axios';
 
@@ -20,6 +20,25 @@ export const getAllImagesWithPath = () => dispatch => {
       })
     })
 };
+
+export const getAllAlbumsWithPathPopUp = () => dispatch => {
+  axios
+    .get(BASE_URL + 'api/album')
+    .then(response =>
+      dispatch({
+        type: ALBUM_IMAGES_POP,
+        payload: response.data
+      })
+    )
+    .catch(err => {
+      console.log(err)
+      dispatch({
+        type: FALSE_RESPONSE,
+        payload: false
+      })
+    })
+};
+
 
 export const getAllAlbumsWithPath = () => dispatch => {
   axios
@@ -67,8 +86,22 @@ export const selectSubDirectoryGlobal = (subDir) => {
   }
 }
 
+export const selectSubDirectoryGlobalPop = (subDir) => {
+  return {
+    type: CURRENT_DIRECTORY_POP,
+    payload: subDir
+  }
+}
+
+
 export const setLoading = () => {
   return {
     type: LOADING_ALBUM
+  };
+};
+
+export const setLoadingPop = () => {
+  return {
+    type: LOADING_ALBUM_POP
   };
 };

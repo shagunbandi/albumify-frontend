@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import FolderCard from './FolderCard';
 
 import {
-    setLoading,
     selectSubDirectoryGlobal,
+    selectSubDirectoryGlobalPop,
     addAlbumAtPath
 } from '../../actions/directoryAction';
 
@@ -24,9 +24,19 @@ export class DirectoryContainer extends Component {
     handleClose = () => this.setState({ showInputModal: false, err_msg:"" });
     handleShow = () => this.setState({ showInputModal: true });
 
+    selectSubDirectoryReducer = (dir) => {
+        if (this.props.reducerSubName === 'directory') {
+            console.log("dire")
+            this.props.selectSubDirectoryGlobal(dir);
+        }
+        else {
+            console.log("dire_pop")
+            this.props.selectSubDirectoryGlobalPop(dir);
+        }
+    }
 
     selectSubDirectory() {
-        this.props.selectSubDirectoryGlobal(this.props.currentDir);
+        this.selectSubDirectoryReducer(this.props.directory[this.props.reducerSubName].currentDir);
         console.log("Clicked");
     }
 
@@ -47,7 +57,8 @@ export class DirectoryContainer extends Component {
     }
     
     saveAlbum = () => {
-        const { currentDir, folder, addAlbumAtPath } = this.props;
+        const { addAlbumAtPath, reducerSubName} = this.props
+        const { currentDir, folder } = this.props.directory[reducerSubName];
         if (this.albumNameValue.value.length < 1) {
             this.setState({ err_msg: "album name cannot be empty" })
         }
@@ -73,14 +84,14 @@ export class DirectoryContainer extends Component {
                 return <li
                     key={i}
                     className='breadcrumb-item'
-                    onClick={() => this.props.selectSubDirectoryGlobal(folderPath.slice(0, folderPath.length - 1))}
+                    onClick={() => this.selectSubDirectoryReducer(folderPath.slice(0, folderPath.length - 1))}
                 ><span>{folerNameList[i]}</span></li>
             }
             else {
                 return <li
                     key={i}
                     className='breadcrumb-item active'
-                    onClick={() => this.props.selectSubDirectoryGlobal(folderPath.slice(0, folderPath.length - 1))}
+                    onClick={() => this.selectSubDirectoryReducer(folderPath.slice(0, folderPath.length - 1))}
                 ><span>{folerNameList[i]}</span></li>
             }
         })
@@ -88,21 +99,22 @@ export class DirectoryContainer extends Component {
     }
 
     render() {
-        const { currentDir, folder, addAlbum } = this.props;
+        const { reducerSubName } = this.props;
+        const { currentDir, folder, addAlbum } = this.props.directory[reducerSubName];
             
         let subFolders = folder[currentDir];
         let backDir = this.getBackDir(currentDir);
         let folderPathList = this.getFolderPathList(currentDir);
-        let content = [<FolderCard key={'-1'} folderData={backDir} isBackDir={true} addAlbum={false} />]
+        let content = [<FolderCard key={'-1'} folderData={backDir} isBackDir={true} addAlbum={false} selectSubDirectoryReducer={this.selectSubDirectoryReducer}/>]
         if (subFolders) {
             content.push(subFolders.map((folderData, index) => (
-                <FolderCard key={index} folderData={folderData} isBackDir={false} addAlbum={false}/>
+                <FolderCard key={index} folderData={folderData} isBackDir={false} addAlbum={false} selectSubDirectoryReducer={this.selectSubDirectoryReducer}/>
             )))
         }
         if (addAlbum) {
             let addBut = this.addButton(currentDir);
             content.push(
-                <FolderCard key={currentDir.length} folderData={addBut} isBackDir={false} addAlbum={true} handleShow={this.handleShow} />
+                <FolderCard key={currentDir.length} folderData={addBut} isBackDir={false} addAlbum={true} handleShow={this.handleShow} selectSubDirectoryReducer={this.selectSubDirectoryReducer} />
             )
         }
         return (
@@ -143,17 +155,18 @@ export class DirectoryContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-    folder: state.directory.folder,
-    currentDir: state.directory.currentDir,
-    addAlbum: state.directory.addAlbum,
-    addAlbumResponse: state.directory.addAlbumResponse
+    directory: state.directory,
+    // folder: state.directory.directory.folder,
+    // currentDir: state.directory.directory.currentDir,
+    // addAlbum: state.directory.directory.addAlbum,
+    // addAlbumResponse: state.directory.directory.addAlbumResponse
 });
 
 export default connect(
     mapStateToProps,
     {
-        setLoading,
         selectSubDirectoryGlobal,
+        selectSubDirectoryGlobalPop,
         addAlbumAtPath
     }
 )(DirectoryContainer);

@@ -18,23 +18,42 @@ export class ImageCard extends Component {
   }
 
   render() {
-    const { image, loadedAnotherImage } = this.props;
+    const { image, loadedAnotherImage, selectThisImage, selectionMode, selectedImages } = this.props;
+
+    const SelectionModeAndSelected = "image-card selected selection-mode"
+    const SelectionModeAndNotSelected = "image-card selection-mode"
+    const NoSelectionMode = "image-card"
+
     return (
-      <img
-        className="image-card"
-        src={"http://localhost:8000/" + image}
-        alt=""
-        onLoad={loadedAnotherImage}
-        onError={loadedAnotherImage}
-        onClick={this.showGalleryView}
-        loading="lazy"
-      />
+      <li className="image-li">
+        <img
+          className={!selectionMode ? NoSelectionMode
+            : selectedImages.includes(image) ? SelectionModeAndSelected
+            : SelectionModeAndNotSelected
+          }
+          src={"http://localhost:8000/" + image}
+          alt=""
+          onLoad={loadedAnotherImage}
+          onError={loadedAnotherImage}
+          loading="lazy"
+          onClick={() => selectionMode ? selectThisImage(image) : undefined}/>
+        {!selectionMode ? (
+          <div>
+            <div className="image-overlay image-overlay-left" onClick={() => selectThisImage(image)}>
+              <span className="image-overlay-text">Select</span>
+            </div>
+            <div className="image-overlay image-overlay-right" onClick={this.showGalleryView}>
+              <span className="image-overlay-text">Open</span>
+            </div>
+          </div>
+        ): <span/>}
+        
+      </li>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  imageCount: state.directory.imageCount,
 });
 
 

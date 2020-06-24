@@ -34,21 +34,21 @@ export class DirectoryLanding extends Component {
       <div className="bg-greyish">
         {
           loading ? <Spinner /> :
-          !response ? <Instructions/> :(
-          <span>
-            <DirectoryContainer />
-            <br />
-            <FileContainer />
-          </span>
-        )}
+            !response ? <Instructions /> : (
+              <span>
+                <DirectoryContainer reducerSubName={'directory'} />
+                <br />
+                <FileContainer />
+              </span>
+            )}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  loading: state.directory.loading,
-  response: state.directory.response
+  loading: state.directory.directory.loading,
+  response: state.directory.directory.response
 });
 
 export default connect(

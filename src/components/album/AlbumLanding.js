@@ -36,9 +36,9 @@ export class AlbumLanding extends Component {
           loading ? <Spinner /> :
             !response ? <Instructions /> : (
               <span>
-                <DirectoryContainer reducerSubName={'directory'} />
+                <DirectoryContainer reducerSubName={'directory'}/>
                 <br />
-                <FileContainer />
+                <FileContainer from={'albumLanding'}/>
               </span>
             )}
       </div>

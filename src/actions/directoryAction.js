@@ -1,4 +1,4 @@
-import { LOADING_ALBUM, FILE_FOLDER_IMAGES, CURRENT_DIRECTORY, ADD_ALBUM_POP, FALSE_RESPONSE, ALBUM_IMAGES, ADD_ALBUM, ALBUM_IMAGES_POP, LOADING_ALBUM_POP, CURRENT_DIRECTORY_POP } from './types';
+import { LOADING_ALBUM, FILE_FOLDER_IMAGES, CURRENT_DIRECTORY, ADD_ALBUM_POP, FALSE_RESPONSE, ALBUM_IMAGES, ADD_ALBUM, ALBUM_IMAGES_POP, LOADING_ALBUM_POP, CURRENT_DIRECTORY_POP, ADD_FILES, REMOVE_FILES } from './types';
 import { BASE_URL } from './constants';
 import axios from 'axios';
 
@@ -88,6 +88,48 @@ export const addAlbumAtPathPop = (path, name) => dispatch => {
     .then(response =>
       dispatch({
         type: ADD_ALBUM_POP,
+        payload: response.data
+      })
+    )
+    .catch(err => {
+      console.log(err)
+      dispatch({
+        type: FALSE_RESPONSE,
+        payload: false
+      })
+    })
+};
+
+export const addFilesToAlbum = (files, path) => dispatch => {
+  axios
+    .post(BASE_URL + 'api/album/images', {
+      album_path: path,
+      file_paths: files,
+    })
+    .then(response =>
+      dispatch({
+        type: ADD_FILES,
+        payload: response.data
+      })
+    )
+    .catch(err => {
+      console.log(err)
+      dispatch({
+        type: FALSE_RESPONSE,
+        payload: false
+      })
+    })
+};
+
+export const removeFromAlbum = (files, path) => dispatch => {
+  axios
+    .post(BASE_URL + 'api/album/images/delete', {
+      album_path: path,
+      file_paths: files,
+    })
+    .then(response =>
+      dispatch({
+        type: REMOVE_FILES,
         payload: response.data
       })
     )

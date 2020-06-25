@@ -8,7 +8,9 @@ import {
   ALBUM_IMAGES_POP,
   LOADING_ALBUM_POP,
   CURRENT_DIRECTORY_POP,
-  ADD_ALBUM_POP
+  ADD_ALBUM_POP,
+  ADD_FILES,
+  REMOVE_FILES
 } from '../actions/types';
 
 const initialState = {
@@ -91,6 +93,14 @@ export default function (state = initialState, action) {
         },
         directory_pop: { ...state.directory_pop },
       }
+    
+    case ADD_FILES:
+      return {
+        ...state,
+      }
+    
+    // case REMOVE_FILES:
+
 
     case ADD_ALBUM:
       if (action.payload.response === "Success") {
@@ -168,6 +178,21 @@ export default function (state = initialState, action) {
           loading: false,
           addAlbum: true
         },
+      }
+    
+    case REMOVE_FILES:
+      return {
+        ...state,
+        directory: {
+          ...state.directory,
+          response: "Success",
+          folder: action.payload.data.folder,
+          file: action.payload.data.file,
+          rootDir: action.payload.data.root,
+          loading: false,
+          addAlbum: true
+        },
+        directory_pop: { ...state.directory_pop },
       }
 
     case ALBUM_IMAGES:

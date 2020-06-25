@@ -19,7 +19,7 @@ export class FileContainer extends Component {
         
         return (
             <div>
-                <ImageContainer data={data} metadata={{ response: "Success" }} />
+                <ImageContainer data={data} metadata={{ response: "Success" }} from={this.props.from} />
             </div >
         );
     }

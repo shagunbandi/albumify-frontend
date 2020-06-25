@@ -8,7 +8,9 @@ import DirectoryContainer from '../folderView/DirectoryContainer';
 import {
   setLoadingPop,
   getAllAlbumsWithPathPopUp,
-  selectSubDirectoryGlobal
+  selectSubDirectoryGlobal,
+  addFilesToAlbum,
+  removeFromAlbum
 } from '../../actions/directoryAction';
 
 
@@ -95,6 +97,19 @@ export class ImageContainer extends Component {
     this.setState({ showDirectory: true })
   }
 
+  addToAlbum = () => {
+    console.log(this.state.selectedImages);
+    console.log(this.props.currentDir);
+    this.props.addFilesToAlbum(this.state.selectedImages, this.props.currentDir);
+    this.setState({ selectionMode: false, selectedImages: [], showDirectory: false })
+    
+  }
+
+  removeFiles = () => {
+    this.props.removeFromAlbum(this.state.selectedImages, this.props.currentDirAlbum);
+    this.setState({ selectionMode: false, selectedImages: [] })
+  }
+
   render() {
     let content = this.state.response ? this.state.imagesLoaded.map((image, index) => (
       <ImageCard key={index}
@@ -116,6 +131,10 @@ export class ImageContainer extends Component {
         {this.state.selectionMode ?
           <div className="bottom-panel">
             <button className="btn btn-dark" onClick={this.CallAndShowDirectory}>Add to Album</button>&nbsp;
+            {this.props.from === 'albumLanding' ?
+              <span><button className="btn btn-dark" onClick={this.removeFiles}>Remove from Album</button>&nbsp;</span>:
+              <span />
+            }
             <button className="btn btn-dark" onClick={() => this.setState({ selectionMode: false, selectedImages: [] })}>Cancel</button>
           </div>
           : <span />}
@@ -124,7 +143,7 @@ export class ImageContainer extends Component {
             <div className="directory-container-pop">
               <DirectoryContainer reducerSubName={'directory_pop'} />
               <div className="bottom-panel">
-                <button className="btn btn-dark" onClick={this.CallAndShowDirectory}>Select</button>&nbsp;
+                <button className="btn btn-dark" onClick={this.addToAlbum}>Select</button>&nbsp;
               <button className="btn btn-dark" onClick={() => this.setState({ showDirectory: false })}>Cancel</button>
               </div>
             </div>
@@ -135,7 +154,9 @@ export class ImageContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  dataLoaded: state.photos.dataLoaded
+  dataLoaded: state.photos.dataLoaded,
+  currentDir: state.directory.directory_pop.currentDir,
+  currentDirAlbum: state.directory.directory.currentDir
 });
 
 export default connect(
@@ -144,5 +165,7 @@ export default connect(
     setLoadingPop,
     selectSubDirectoryGlobal,
     getAllAlbumsWithPathPopUp,
+    addFilesToAlbum,
+    removeFromAlbum
   }
 )(ImageContainer);

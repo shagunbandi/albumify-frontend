@@ -13,9 +13,10 @@ import {
   removeFromAlbum
 } from '../../actions/directoryAction';
 
+export const imagesAtOnce = 100;
 
 export class ImageContainer extends Component {
-
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -43,8 +44,8 @@ export class ImageContainer extends Component {
     if (metadata.response !== 'Success') {
       return;
     }
-    imagesLoaded = data.slice(0, loadNextOn + 50);
-    this.setState({ imagesLoaded, loadNextOn: loadNextOn + 50 });
+    imagesLoaded = data.slice(0, loadNextOn + imagesAtOnce);
+    this.setState({ imagesLoaded, loadNextOn: loadNextOn + imagesAtOnce });
   }
 
   selectThisImage = (path) => {
@@ -77,7 +78,7 @@ export class ImageContainer extends Component {
       this.setState({ response: false });
     }
     else {
-      this.setState({ imageCount: 0, imagesLoaded: data.slice(0, 50), loadNextOn: 50, response: true });
+      this.setState({ imageCount: 0, imagesLoaded: data.slice(0, imagesAtOnce), loadNextOn: imagesAtOnce, response: true });
     }
   }
 
@@ -87,7 +88,7 @@ export class ImageContainer extends Component {
       this.setState({ response: false });
     }
     else {
-      this.setState({ imageCount: 0, imagesLoaded: data.slice(0, 50), loadNextOn: 50, response: true });
+      this.setState({ imageCount: 0, imagesLoaded: data.slice(0, imagesAtOnce), loadNextOn: imagesAtOnce, response: true });
     }
   }
 

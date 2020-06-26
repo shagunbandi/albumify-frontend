@@ -1,0 +1,14 @@
+{
+  "main.css": "/albumify-frontend/static/css/main.ecda9776.chunk.css",
+  "main.js": "/albumify-frontend/static/js/main.e296336a.chunk.js",
+  "main.js.map": "/albumify-frontend/static/js/main.e296336a.chunk.js.map",
+  "static/js/1.330370db.chunk.js": "/albumify-frontend/static/js/1.330370db.chunk.js",
+  "static/js/1.330370db.chunk.js.map": "/albumify-frontend/static/js/1.330370db.chunk.js.map",
+  "runtime~main.js": "/albumify-frontend/static/js/runtime~main.31354502.js",
+  "runtime~main.js.map": "/albumify-frontend/static/js/runtime~main.31354502.js.map",
+  "static/media/loading1.gif": "/albumify-frontend/static/media/loading1.3f259006.gif",
+  "static/css/main.ecda9776.chunk.css.map": "/albumify-frontend/static/css/main.ecda9776.chunk.css.map",
+  "index.html": "/albumify-frontend/index.html",
+  "precache-manifest.27ae71359800f07f27c40af514cc5e6b.js": "/albumify-frontend/precache-manifest.27ae71359800f07f27c40af514cc5e6b.js",
+  "service-worker.js": "/albumify-frontend/service-worker.js"
+}

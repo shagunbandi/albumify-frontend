@@ -27,7 +27,10 @@ This will run the python server on `localhost:8000`
 
 ### Frontend
 
+
 https://github.com/shagunbandi/albumify-frontend
+
+https://shagunbandi.github.io/albumify-frontend/
 
 Install the required node_modules, and start the server
 

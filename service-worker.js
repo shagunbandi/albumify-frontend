@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/albumify-frontend/precache-manifest.27ae71359800f07f27c40af514cc5e6b.js"
+  "/albumify-frontend/precache-manifest.fdf99ab6af8bfc61b601bad15dc45582.js"
 );
 
 workbox.clientsClaim();

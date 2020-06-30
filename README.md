@@ -36,7 +36,6 @@ https://github.com/shagunbandi/albumify-frontend
 Install the required node_modules, and start the server
 
 ```bash
-cd PhotoAlbumReact
 npm i
 npm start
 ```

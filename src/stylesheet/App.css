@@ -241,6 +241,20 @@ img {
     right: 0;
 }
 
+.info-div {
+    text-align: center;
+    color: white;
+}
+
+.info-div:hover > h4 > a {
+    color: white;
+}
+
+.info-div > h4 > a {
+    color: black;
+    text-decoration: underline;
+}
+
 .image-overlay-text {
     color: white;
     font-weight: bolder;

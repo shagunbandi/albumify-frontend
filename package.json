@@ -5,7 +5,7 @@
   "homepage": "https://shagunbandi.github.io/albumify-frontend",
   "dependencies": {
     "arrow-keys-react": "^1.0.6",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.4.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
